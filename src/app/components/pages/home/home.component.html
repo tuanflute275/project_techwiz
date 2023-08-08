@@ -1,0 +1,23 @@
+<app-header></app-header>
+<p>home works!</p>
+<div class="container">
+  <div>
+    <input class="my-4" type="text" [(ngModel)]="userFilter.name" placeholder="Search...">
+
+  </div>
+  <div class="row">
+    <div class="col-6"
+      *ngFor="let item of products | filterBy: userFilter | paginate: { itemsPerPage: 8, currentPage: p }">
+      <div class="card">
+        <img class="card-img-top" [src]="item.image" alt="">
+        <div class="card-body">
+          <h4 class="card-title">{{ item.name }}</h4>
+          <p class="card-text">{{ item.price | currency:"VND" }}</p>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<app-footer></app-footer>
