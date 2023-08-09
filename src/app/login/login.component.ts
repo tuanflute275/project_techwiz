@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppService } from '../services/app.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private app: AppService
   ) { }
 
   ngOnInit(): void {
@@ -28,37 +31,46 @@ export class LoginComponent implements OnInit {
     let data = {
       email: formData.email,
       password: formData.password,
-      role: 'users'
     };
-    // this.userService.login(data).subscribe(
-    //   (response: any) => {
-    //     console.log(response);
 
-    //     let user = localStorage.setItem('token', response.token);
-    //     console.log(user);
-
-    //     // switch (user.role) {
-    //     //   case 'admin':
-    //     //     return this.router.navigate(['/dashboard']);
-    //     //   case 'user':
-    //     //     return this.router.navigateByUrl('/home');
-    //     //   default:
-    //     //     return this.router.navigateByUrl('/');
-    //     // }
-    //   }
-    // );
     console.log(data);
-    let accObject = localStorage.getItem('account');
-    // let dataAccount = JSON.parse(accObject);
-    console.log(accObject)
-    // if(dataAccount.email == data.email)
-
-    // localStorage.setItem('token', jsonObject);
+    this.app.login().subscribe(response=>{
+      const user = response.find((a:any)=>{
+        return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
+      });
+      if(user){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login success !',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.loginForm.reset();
+        this.router.navigate(['/']);
+      }else{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'User not found !',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    },error=>{
+      alert('something went wrong')
+    }
+    )
   }
 
   developing() {
-    // this.toastr.error('developing !!!')
-    alert('opps')
+    Swal.fire({
+      position: 'top-end',
+      icon: 'warning',
+      title: 'Developing !',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
 }

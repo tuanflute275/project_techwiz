@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppService } from '../services/app.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -12,9 +14,11 @@ export class RegisterComponent implements OnInit {
   responseMessage: any;
   account:any = [];
 
-
-
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private app: AppService
+    ) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -31,14 +35,28 @@ export class RegisterComponent implements OnInit {
       name: formData.name,
       email: formData.email,
       password: formData.password,
-      role: 'user'
     }
     console.log(data);
-    let dataAcc = this.account.push(data);
-    console.log(this.account);
-    //save localStorage
-    let jsonAccount = JSON.stringify(this.account);
-    localStorage.setItem('account', jsonAccount);
+
+    this.app.singUp(data).subscribe(response=>{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Sign Up Success',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.signupForm.reset();
+      this.router.navigate(['/login']);
+    }, error=>{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Something went wrong !!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
   }
 
 }

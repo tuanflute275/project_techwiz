@@ -1,6 +1,25 @@
 {
-  "account":[],
-  "product":[
+  "account": [
+    {
+      "name": "nguyen van tuan",
+      "email": "tuan234@gmail.com",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "name": "nguyen van hi",
+      "email": "tuan234@gmail.com",
+      "password": "3r23r23",
+      "id": 3
+    },
+    {
+      "name": "tuilatui",
+      "email": "tuan234@gmail.com",
+      "password": "111",
+      "id": 4
+    }
+  ],
+  "product": [
     {
       "name": "Incredible Granite Towels",
       "image": "https://loremflickr.com/640/480/fashion",
