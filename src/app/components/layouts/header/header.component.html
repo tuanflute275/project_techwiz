@@ -1,28 +1,64 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <a class="navbar-brand" routerLink="#">Navbar</a>
-  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-      aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavId">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="about">about</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" routerLink="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu" aria-labelledby="dropdownId">
-          <a class="dropdown-item" routerLink="#">Action 1</a>
-          <a class="dropdown-item" routerLink="#">Action 2</a>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+<header>
+  <nav class="navbar navbar-expand-sm navbar-light px-4 py-2 d-flex align-items-center">
+    <a class="navbar-brand" routerLink="/home">
+      <img [src]="logo" alt="">
+    </a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <div class="logo">
+        <a class="nav-link" routerLink="/home"><img src="https://htmldemo.net/lukani/lukani/assets/img/logo/logo.png" alt="anh" width="200px"></a>
+      </div>
+      <ul class="navbar-nav m-auto mt-2 py-4 mt-lg-0 menu">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home/shop">Shop <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home/faq">FAQ <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home/blog">Blog <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home/contact">Contact <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div class="header_account">
+        <ul class="d-flex align-items-center">
+          <li class="header_search">
+            <a>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+          </li>
+          <li class="header_heart">
+            <a routerLink="/home/wishlish">
+              <i class="far fa-heart"></i>
+            </a>
+            <span class="item_count">6</span>
+          </li>
+          <li class="header_shopping_cart">
+            <a routerLink="/home/cart">
+              <i class="fa-solid fa-cart-shopping" style="color: #171717;"></i>
+            </a>
+            <span class="item_count">7</span>
+          </li>
+          <li>
+            <div class="dropdown">
+              <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                <img src="../../../../assets/images/icon/avatar.jpg" class="avatar" style="position: relative;" alt="">
+              </a>
+              <div class="dropdown-menu show-avatar text-white" style="background-color: #ccc;">
+                <a class="dropdown-item bg-white text-body" (click)="logout()">Logout</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

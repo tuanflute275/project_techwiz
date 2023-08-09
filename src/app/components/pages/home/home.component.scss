@@ -1,0 +1,62 @@
+.img-overlay{
+    position: relative;
+    z-index: 0 !important;
+}
+
+.banner-text{
+    position: absolute;
+    z-index: 1000 !important;
+    color: #333;
+}
+.carousel-caption-custom{
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    top: 20%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: left;
+}
+
+.carousel-caption-custom p{
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.carousel-caption-custom button{
+    border: none;
+    border: 1px solid #333;
+    width: 200px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: black;
+}
+
+.carousel-caption-custom button:hover{
+    background-color: green;
+}
+
+.title h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+.price{
+    display: flex;
+    justify-content: center;
+}
+
+.section{
+    background-color: #f2f5f1;
+    height: 500px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+  }

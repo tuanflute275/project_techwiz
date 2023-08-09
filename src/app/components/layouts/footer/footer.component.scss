@@ -1,0 +1,25 @@
+ul li{
+    font-size: 14px;
+    padding-top: 8px;
+    list-style: none;
+    font-weight: 500;
+}
+
+.icon ul li a{
+    width: 42px;
+    height: 42px;
+    line-height: 44px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    background: #f2f2f2;
+    border-radius: 50%;
+    font-size: 18px;
+    margin-left: 35px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container .col-md-4{
+        display: column;
+    }
+}
