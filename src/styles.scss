@@ -1,8 +1,54 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* {box-sizing: border-box;}
 
-$main-color: rgb(68, 145, 51);
+
+//variable
+$main-color: #79a206;
 $white-color: #fff;
+$border-015: rgba(112, 112, 112, 0.15);
+$border-05: rgba(112, 112, 112, 0.5);
+
+
+
+
+//mixin
+@mixin button3($py, $px, $fz) {
+  button {
+    background: $main-color;
+    color: #fff;
+    text-decoration: none;
+    padding: $py $px;
+    border: none !important;
+    outline: none !important;
+    position: relative;
+    transition: 800ms ease all;
+    font-weight: bold;
+    font-size: $fz;
+  }
+  button:hover {
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+  }
+  button:before,
+  button:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: $main-color;
+    transition: 400ms ease all;
+  }
+  button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+  }
+  button:hover:before,
+  button:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+  }
+}

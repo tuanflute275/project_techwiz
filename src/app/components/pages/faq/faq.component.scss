@@ -1,0 +1,19 @@
+@import '../../../../styles.scss';
+
+main {
+  margin-top: 110px;
+  .box-title {
+    padding: 10px 0;
+    .default {
+      text-decoration: none;
+      color: #999999;
+      &:hover {
+        color: $main-color;
+      }
+    }
+    .title {
+      font-size: 35px;
+    }
+  }
+
+}

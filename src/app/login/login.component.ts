@@ -21,11 +21,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      // email:[null, [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
+
+    if (this.getUData()) {
+      this.router.navigate(['/']);
+    }
   }
+
+
+
+  getUData(): any {
+    const data = localStorage.getItem("u_data") ? JSON.parse(localStorage.getItem("u_data") as string) : null;
+    console.log("data", data);
+    return data;
+  }
+
   handleSubmit() {
     let formData = this.loginForm.value;
     let data = {
@@ -34,11 +46,11 @@ export class LoginComponent implements OnInit {
     };
 
     console.log(data);
-    this.app.login().subscribe(response=>{
-      const user = response.find((a:any)=>{
+    this.app.login().subscribe(response => {
+      const user = response.find((a: any) => {
         return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
       });
-      if(user){
+      if (user) {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -47,8 +59,10 @@ export class LoginComponent implements OnInit {
           timer: 1500
         });
         this.loginForm.reset();
+        console.log(user);
+        localStorage.setItem('u_data', JSON.stringify(user));
         this.router.navigate(['/']);
-      }else{
+      } else {
         Swal.fire({
           position: 'top-end',
           icon: 'error',
@@ -57,7 +71,7 @@ export class LoginComponent implements OnInit {
           timer: 1500
         });
       }
-    },error=>{
+    }, error => {
       alert('something went wrong')
     }
     )

@@ -31,7 +31,29 @@
             <label class="form-label" for="form3Example3">Email address</label>
             <input type="email" formControlName="email" id="form3Example3" class="form-control form-control-lg"
               placeholder="Enter a valid email address" />
-              <div *ngIf="loginForm.controls.email.touched && !loginForm.controls.email.valid" style="color: red;">email is require!</div>
+              <div
+              class="box-message"
+              *ngIf="
+                loginForm.controls.email.invalid &&
+                (loginForm.controls.email.touched ||
+                  loginForm.controls.email.dirty)
+              "
+            >
+              <div *ngIf="loginForm.controls.email.errors">
+                <div
+                  *ngIf="loginForm.controls.email.errors['required']"
+                  style="color: red"
+                >
+                  email is require!
+                </div>
+                <div
+                  *ngIf="loginForm.controls.email.errors['email']"
+                  style="color: red"
+                >
+                  Incorrect Email Format
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Password input -->
@@ -39,7 +61,33 @@
             <label class="form-label" for="form3Example4">Password</label>
             <input type="password" formControlName="password" id="form3Example4" class="form-control form-control-lg"
               placeholder="Enter password" />
-              <div *ngIf="loginForm.controls.password.touched && !loginForm.controls.password.valid" style="color: red;">password is require!</div>
+              <div
+              class="box-message"
+              *ngIf="
+                loginForm.controls.password.invalid &&
+                (loginForm.controls.password.touched ||
+                  loginForm.controls.password.dirty)
+              "
+            >
+              <div *ngIf="loginForm.controls.password.errors">
+                <div
+                  *ngIf="
+                    loginForm.controls.password.errors['required']
+                  "
+                  style="color: red"
+                >
+                  password is require!
+                </div>
+                <div
+                  *ngIf="
+                    loginForm.controls.password.errors['minlength']
+                  "
+                  style="color: red"
+                >
+                  Min length 6 chars
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="d-flex justify-content-between align-items-center">

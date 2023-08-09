@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<main>
+  <div class="text-center box-title">
+    <nav class="breadcrumb text-center d-flex justify-content-center">
+      <a class="breadcrumb-item default" routerLink="/">Home</a>
+      <span class="breadcrumb-item active">Shop</span>
+    </nav>
+    <h3 class="title">Shop</h3>
+    <div class="container">
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-md-9">
+
+        <div class="row">
+          <div class="col-md-4" *ngFor="let item of products | paginate:{itemsPerPage: 9, currentPage:page}">
+            <div class="card text-center border-0 position-relative">
+              <div class="show">
+                <div class="hide-cus">
+                  <div class="icon-heart position-absolute">
+                    <a (click)="onFavorite(item)">
+                      <img src="https://mg-fashion.mgtechnologies.co.in/assets/images/heart-icon.svg" alt="">
+                    </a>
+                  </div>
+                  <div class="btn-add position-absolute">
+                    <a (click)="onAddToCart(item)">Add To Bag</a>
+                  </div>
+                </div>
+                <a (click)="getDetailProduct(item.id)">
+                  <img class="card-img-top img-product" src="{{item.image}}" alt="image">
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="text-warning star">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <h5 class="card-title">{{item.name}}</h5>
+                <div class="box-price d-flex justify-content-center align-items-center">
+                  <p class="card-price mr-2 font-weight-bold">{{item.price | currency:"USD":"symbol":"0.3"}}</p>
+                  <p class="card-sale_price">{{item.sale_price | currency:"USD":"symbol":"0.3"}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pagination-controls class="text-center mt-3" (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<app-footer></app-footer>
