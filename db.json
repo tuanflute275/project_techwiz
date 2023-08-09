@@ -17,6 +17,12 @@
       "email": "tuan234@gmail.com",
       "password": "111",
       "id": 4
+    },
+    {
+      "name": "KhaccThienn",
+      "email": "muzan112@gmail.com",
+      "password": "123456",
+      "id": 5
     }
   ],
   "product": [

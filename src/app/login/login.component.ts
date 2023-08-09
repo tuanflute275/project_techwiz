@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   loginForm: any = FormGroup;
   responseMessage: any;
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -25,7 +24,19 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
+
+    if (this.getUData()) {
+      this.router.navigate(['/'])
+      ;
+    }
   }
+
+  getUData(): any {
+    const data = localStorage.getItem("u_data") ? JSON.parse(localStorage.getItem("u_data") as string) : null;
+    console.log("data", data);
+    return data;
+  }
+
   handleSubmit() {
     let formData = this.loginForm.value;
     let data = {
