@@ -128,7 +128,7 @@
       "price": 84,
       "sale_price": 14,
       "category_id": 1,
-      "description":"It is a tree with cluster roots and tall stems from the mountains near the sea. Therefore, they are very water-loving and are often planted in feng shui rock holes. It is sought after for its high feng shui properties and brings good luck to the owner.",
+      "description": "It is a tree with cluster roots and tall stems from the mountains near the sea. Therefore, they are very water-loving and are often planted in feng shui rock holes. It is sought after for its high feng shui properties and brings good luck to the owner.",
       "id": 13
     },
     {
@@ -155,7 +155,7 @@
       "price": 62,
       "sale_price": 2,
       "category_id": 1,
-      "description":"The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 16
     },
     {
@@ -173,7 +173,7 @@
       "price": 49,
       "sale_price": 4,
       "category_id": 1,
-      "description":"With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 18
     },
     {
@@ -209,7 +209,7 @@
       "price": 88,
       "sale_price": 12,
       "category_id": 1,
-      "description":"With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 22
     },
     {
@@ -227,7 +227,7 @@
       "price": 40,
       "sale_price": 6,
       "category_id": 1,
-      "description":"The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 24
     },
     {
@@ -254,7 +254,7 @@
       "price": 35,
       "sale_price": 3,
       "category_id": 1,
-      "description":"The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 27
     },
     {
@@ -272,7 +272,7 @@
       "price": 50,
       "sale_price": 10,
       "category_id": 1,
-      "description":"Extremely popular with botanists and plant enthusiasts. With the unique color and uniqueness of the tree.",
+      "description": "Extremely popular with botanists and plant enthusiasts. With the unique color and uniqueness of the tree.",
       "id": 29
     },
     {
@@ -290,7 +290,7 @@
       "price": 62,
       "sale_price": 6,
       "category_id": 1,
-      "description":"The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 31
     },
     {
@@ -308,7 +308,7 @@
       "price": 90,
       "sale_price": 18,
       "category_id": 1,
-      "description":"Plant pots are handmade entirely with organic, eco-friendly materials. With a durability of up to 3-5 years and after decomposition, it can be used as fertilizer for plants.",
+      "description": "Plant pots are handmade entirely with organic, eco-friendly materials. With a durability of up to 3-5 years and after decomposition, it can be used as fertilizer for plants.",
       "id": 33
     },
     {
@@ -317,7 +317,7 @@
       "price": 94,
       "sale_price": 15,
       "category_id": 1,
-      "description":"The tiger tongue tree is a feng shui plant that is sought after by households in Asia with the tradition that it can exorcise and protect their homes. The fertilization process is extremely simple because it can live in harsh environments, does not need too much watering, is exposed to a lot of light and plants will thrive.",
+      "description": "The tiger tongue tree is a feng shui plant that is sought after by households in Asia with the tradition that it can exorcise and protect their homes. The fertilization process is extremely simple because it can live in harsh environments, does not need too much watering, is exposed to a lot of light and plants will thrive.",
       "id": 34
     },
     {
@@ -353,7 +353,7 @@
       "price": 96,
       "sale_price": 14,
       "category_id": 1,
-      "description":"With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 38
     },
     {
@@ -380,7 +380,7 @@
       "price": 52,
       "sale_price": 2,
       "category_id": 1,
-      "description":"The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 41
     }
   ],
@@ -415,14 +415,6 @@
       "sale_price": 12,
       "category_id": 1,
       "id": 1
-    },
-    {
-      "name": "Sleek Rubber Chicken",
-      "image": "https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg",
-      "price": 80,
-      "sale_price": 8,
-      "category_id": 1,
-      "id": 6
     }
   ]
 }

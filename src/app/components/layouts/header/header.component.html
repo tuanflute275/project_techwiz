@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-light px-4 py-2 d-flex align-items-center"
   >
     <a class="navbar-brand" routerLink="/">
-      <img [src]="logo" alt="anh" width="200px">
+      <img [src]="logo" alt="anh" width="150px">
     </a>
     <button
       class="navbar-toggler d-lg-none"
@@ -30,7 +30,12 @@
         </li>
         <li class="nav-item active">
           <a class="nav-link" routerLink="/faq"
-            >FAQ <span class="sr-only">(current)</span></a
+            >Faq <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/about"
+            >About <span class="sr-only">(current)</span></a
           >
         </li>
         <li class="nav-item active">
@@ -43,7 +48,7 @@
             >Contact <span class="sr-only">(current)</span></a
           >
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a
             class="nav-link text-dark dropdown-toggle"
             href="#"
@@ -62,7 +67,7 @@
               >{{ item.name }}</a
             >
           </div>
-        </li>
+        </li> -->
       </ul>
 
       <div class="header_account">

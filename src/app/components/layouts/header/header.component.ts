@@ -9,9 +9,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  heart: any = 1;
+  heart: number = 1;
+  cart:number = 1;
   categories: any = [];
-  logo = '../../../../assets/images/logo/logo.jpg'
+  logo = 'https://htmldemo.net/lukani/lukani/assets/img/logo/logo.png'
   avatar = '../../../../assets/images/logo/avatar_admin.jpg'
   u_data: any;
 

@@ -13,6 +13,7 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { ProductDetailComponent } from './components/pages/product-detail/product-detail.component';
 import { ProdByCateComponent } from './components/pages/prod-by-cate/prod-by-cate.component';
+import { AboutComponent } from './components/pages/about/about.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'category/:id', component: ProdByCateComponent },
   { path: 'productDetail/:id', component: ProductDetailComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'heart', component: HeartComponent },

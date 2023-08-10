@@ -80,3 +80,16 @@ ul {
   background-color: #79a206;
   color: #fff;
 }
+
+.category{
+  ul{
+    li{
+      margin: 10px 0;
+      a{
+        &:hover{
+          color: $main-color;
+        }
+      }
+    }
+  }
+}
