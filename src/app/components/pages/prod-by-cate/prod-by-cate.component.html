@@ -1,1 +1,199 @@
-<p>prod-by-cate works!</p>
+<app-header></app-header>
+
+<main>
+  <div class="text-center box-title">
+    <nav class="breadcrumb text-center d-flex justify-content-center">
+      <a class="breadcrumb-item default" routerLink="/">Home</a>
+      <span class="breadcrumb-item active">Shop</span>
+    </nav>
+    <h3 class="title">Shop</h3>
+    <div class="container"></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-lg-3">
+        <form [formGroup]="productFormSearch" (ngSubmit)="submitSearch()" action="">
+          <div id="search-box">
+            <input type="text" id="search-box__input" formControlName="name" placeholder="Search..">
+            <button type="submit" id="search-box__btn">
+              <i class="cil-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <div>
+          <label for="minPrice">Giá tối thiểu:</label>
+          <input type="number" [(ngModel)]="minPrice" name="minPrice">
+        </div>
+
+        <div>
+          <label for="maxPrice">Giá tối đa:</label>
+          <input type="number" [(ngModel)]="maxPrice" name="maxPrice">
+        </div>
+
+        <button class="btn btn-primary" (click)="filterProductsByPrice()">Lọc</button>
+      </div> -->
+      <div class="col-md-3">
+        <form
+          [formGroup]="productFormSearch"
+          (ngSubmit)="submitSearch()"
+          action=""
+        >
+          <div id="search-box">
+            <input
+              type="text"
+              id="search-box__input"
+              formControlName="name"
+              placeholder="Search.."
+            />
+            <button type="submit" id="search-box__btn">
+              <i class="cil-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <div class="women mt-3">
+          <b>WOMEN</b>
+          <hr />
+          <ul>
+            <li><a href="">Shoes</a></li>
+            <li><a href="">Bags</a></li>
+            <li><a href="">Clothing</a></li>
+          </ul>
+        </div>
+
+        <div class="price pt-3">
+          <b>FILTER BY PRICE</b>
+          <hr />
+          <!-- <input type="range" min="0" max="99" name="" id=""> -->
+          <br />
+          <div>
+            <label for="minPrice">Giá tối thiểu:</label>
+            <input type="number" [(ngModel)]="minPrice" name="minPrice" />
+          </div>
+
+          <div>
+            <label for="maxPrice">Giá tối đa:</label>
+            <input type="number" [(ngModel)]="maxPrice" name="maxPrice" />
+          </div>
+
+          <button
+            class="btn btn-primary mt-3"
+            (click)="filterProductsByPrice()"
+          >
+            Lọc
+          </button>
+        </div>
+
+        <div class="manufacturer pt-3">
+          <b>MANUFACTURER</b>
+          <hr />
+          <ul>
+            <li><a href="">Brake Parts</a></li>
+            <li><a href="">Accessories</a></li>
+            <li><a href="">Engie Parts</a></li>
+            <li><a href="">Hermes</a></li>
+            <li><a href="">Louis Vuittion</a></li>
+          </ul>
+        </div>
+
+        <div class="compare pt-5">
+          <b>COMPARE</b>
+          <hr />
+          <div class="row">
+            <div class="col-md-5">
+              <img
+                src="https://htmldemo.net/lukani/lukani/assets/img/product/product2.jpg"
+                alt=""
+                width="80px"
+                height="80px"
+              />
+            </div>
+
+            <div class="col-md-7">
+              <p>Donec Non Est</p>
+              <p class="sale_price">$80.00 <del>$20.00</del></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <img
+                src="https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg"
+                alt=""
+                width="80px"
+                height="80px"
+              />
+            </div>
+
+            <div class="col-md-7">
+              <p>Donec Non Est</p>
+              <p class="sale_price">$80.00 <del>$20.00</del></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div
+            class="col-md-4"
+            *ngFor="
+              let item of products
+                | paginate : { itemsPerPage: 9, currentPage: page }
+            "
+          >
+            <div class="card text-center border-0 position-relative">
+              <div class="show">
+                <div class="hide-cus">
+                  <div class="icon-heart position-absolute">
+                    <a (click)="onFavorite(item)">
+                      <img
+                        src="https://mg-fashion.mgtechnologies.co.in/assets/images/heart-icon.svg"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                  <div class="btn-add position-absolute">
+                    <a (click)="onAddToCart(item)">Add To Bag</a>
+                  </div>
+                </div>
+                <a (click)="getDetailProduct(item.id)">
+                  <img
+                    class="card-img-top img-product"
+                    src="{{ item.image }}"
+                    alt="image"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="text-warning star">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <h5 class="card-title">{{ item.name }}</h5>
+                <div
+                  class="box-price d-flex justify-content-center align-items-center"
+                >
+                  <p class="card-price mr-2 font-weight-bold">
+                    {{ item.price | currency : "USD" : "symbol" : "0.3" }}
+                  </p>
+                  <p class="card-sale_price">
+                    {{ item.sale_price | currency : "USD" : "symbol" : "0.3" }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pagination-controls
+          class="text-center mt-3"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

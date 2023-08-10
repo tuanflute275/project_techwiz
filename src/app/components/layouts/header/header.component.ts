@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,16 +10,26 @@ import Swal from 'sweetalert2';
 })
 export class HeaderComponent implements OnInit {
   heart: any = 1;
+  categories: any = [];
   logo = '../../../../assets/images/logo/logo.jpg'
   avatar = '../../../../assets/images/logo/avatar_admin.jpg'
   u_data: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private app: AppService) {
 
   }
 
   ngOnInit(): void {
+    this.getListCategory();
     this.u_data = this.getUData();
+
+  }
+
+  getListCategory() {
+    this.app.getCategory().subscribe(res => {
+      console.log(res);
+      this.categories = res;
+    })
   }
 
   getUData(): any {

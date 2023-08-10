@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -54,6 +55,7 @@ import { ProdByCateComponent } from './components/pages/prod-by-cate/prod-by-cat
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FilterPipeModule,
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

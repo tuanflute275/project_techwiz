@@ -43,6 +43,26 @@
             >Contact <span class="sr-only">(current)</span></a
           >
         </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link text-dark dropdown-toggle"
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Categories
+          </a>
+          <div class="dropdown-menu dropdown-menu-custom">
+            <a
+              *ngFor="let item of categories"
+              routerLink="/category/{{ item.id }}"
+              class="dropdown-item text-dark"
+              href="#"
+              >{{ item.name }}</a
+            >
+          </div>
+        </li>
       </ul>
 
       <div class="header_account">
@@ -82,7 +102,7 @@
                 />
               </a>
               <div class="dropdown-menu show-avatar text-dark">
-                <a class="dropdown-item btn-logout" (click)="logout();"
+                <a class="dropdown-item btn-logout" (click)="logout()"
                   >Logout</a
                 >
               </div>
