@@ -1,30 +1,70 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-light px-4 py-2 d-flex align-items-center">
+  <nav
+    class="navbar navbar-expand-sm navbar-light px-4 py-2 d-flex align-items-center"
+  >
     <a class="navbar-brand" routerLink="/">
-      <img [src]="logo" alt="">
+      <img [src]="logo" alt="anh" width="200px">
     </a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav m-auto mt-2 py-4 mt-lg-0 menu">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/"
+            >Home <span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/shop">Shop <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/shop"
+            >Shop <span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/faq">FAQ <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/faq"
+            >FAQ <span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/blog">Blog <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/blog"
+            >Blog <span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/contact">Contact <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/contact"
+            >Contact <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link text-dark dropdown-toggle"
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Categories
+          </a>
+          <div class="dropdown-menu dropdown-menu-custom">
+            <a
+              *ngFor="let item of categories"
+              routerLink="/category/{{ item.id }}"
+              class="dropdown-item text-dark"
+              href="#"
+              >{{ item.name }}</a
+            >
+          </div>
         </li>
       </ul>
+
       <div class="header_account">
         <ul class="d-flex align-items-center">
           <li class="header_search">
@@ -32,28 +72,47 @@
               <i class="fa-solid fa-magnifying-glass"></i>
             </a>
           </li>
-          <li class="header_heart">
+
+          <li *ngIf="u_data" class="header_heart">
             <a routerLink="/heart">
               <i class="far fa-heart"></i>
             </a>
             <span class="item_count">{{ heart }}</span>
           </li>
-          <li class="header_shopping_cart">
+          <li *ngIf="u_data" class="header_shopping_cart">
             <a routerLink="/cart">
-              <i class="cil-cart font-weight-bold" style="color: #171717;"></i>
+              <i class="cil-cart font-weight-bold" style="color: #171717"></i>
             </a>
             <span class="item_count">{{ cart }}</span>
           </li>
-          <li>
+          <li *ngIf="u_data">
             <div class="dropdown">
-              <a class="btn dropdown-toggle btn-avatar" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                <img [src]="avatar" class="avatar" style="position: relative; border-radius: 50%;" alt="">
+              <a
+                class="btn dropdown-toggle btn-avatar"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  [src]="avatar"
+                  class="avatar"
+                  style="position: relative; border-radius: 50%"
+                  alt=""
+                />
               </a>
-              <div class="dropdown-menu show-avatar text-dark bg-info">
-                <a class="dropdown-item" (click)="upload()">Upload Image</a>
-                <a class="dropdown-item" (click)="logout()">Logout</a>
+              <div class="dropdown-menu show-avatar text-dark">
+                <a class="dropdown-item btn-logout" (click)="logout()"
+                  >Logout</a
+                >
               </div>
             </div>
+          </li>
+
+          <li *ngIf="!u_data" class="header_heart">
+            <a routerLink="/login">
+              <i class="far fa-user"></i>
+            </a>
           </li>
         </ul>
       </div>

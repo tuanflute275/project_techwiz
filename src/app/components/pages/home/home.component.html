@@ -4,8 +4,8 @@
   <div
       id="carouselExampleCaptions"
       class="carousel slide"
-      data-ride="carousel"
-    >
+      data-ride="carousel">
+
       <ol class="carousel-indicators">
         <li data-target="#carouselId" data-slide-to="0" class="active"></li>
         <li data-target="#carouselId" data-slide-to="1"></li>
@@ -21,7 +21,7 @@
           <div class="carousel-caption-custom d-none d-md-block text-body">
             <h1 class="carousel-header  mt-5">BIG SALE NEW ARRIVALS</h1>
             <p>Discount 20% Off For Lukani Members</p>
-            <button class="text-white">DISCOVER NOW</button>
+            <button routerLink="/shop" class="text-white">DISCOVER NOW</button>
           </div>
         </div>
         <div class="carousel-item">
@@ -33,7 +33,7 @@
           <div class="carousel-caption-custom d-none d-md-block text-body">
             <h1 class="carousel-header  mt-5">LUKANI TRENDING 2019</h1>
             <p>Discount 20% Off For Lukani Members</p>
-            <button class="text-white">DISCOVER NOW</button>
+            <button routerLink="/shop" class="text-white">DISCOVER NOW</button>
           </div>
         </div>
         <div class="carousel-item">
@@ -45,7 +45,7 @@
           <div class="carousel-caption-custom d-none d-md-block text-body">
             <h1 class="carousel-header  mt-5">HOUSEPLANT AMAZINGCHOLCE</h1>
             <p>Discount 20% Off For Lukani Members</p>
-            <button class="text-white">DISCOVER NOW</button>
+            <button routerLink="/shop" class="text-white">DISCOVER NOW</button>
           </div>
         </div>
       </div>
@@ -125,19 +125,65 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <h1 class="text-center py-5">What Our Customers Says ?</h1>
+      <div class="main text-center">
+        <img src="https://htmldemo.net/lukani/lukani/assets/img/about/testimonials-icon.png" alt="anh" class="my-5">
+        <p class="text">“ When a beautiful design is combined with powerful technology, 
+          <br>
+          it truly is an artwork. I love how my website operates and looks with this
+          theme. Thank you for the awesome product. ”
+        </p>
+        <img src="https://htmldemo.net/lukani/lukani/assets/img/about/testimonial1.png" alt="anh" class="my-4">
+        <p style="font-weight: 500;">Rebecka Filson/CEO of CSC</p>
+      </div>
+    </div>
     <div class="container-fluid section my-5">
-      <h1 class="text-center pt-5 heading">Our Latest Posts</h1>
+      <h1 class="text-center py-5">Our Latest Posts</h1>
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <img src="https://htmldemo.net/lukani/lukani/assets/img/blog/blog1.jpg" alt="anh" width="100%">
+            <img
+              src="https://htmldemo.net/lukani/lukani/assets/img/blog/blog1.jpg"
+              alt="anh"
+              width="100%"
+            />
             <h5 class="pt-4">Libero Lorem</h5>
+            <p>By
+              <span style="color: #79a206;">admin/ July 16, 2021</span>
+            </p>
+            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+              pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus praesent</p>
           </div>
-          <div class="col-md-4"></div>
-          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <img
+              src="https://htmldemo.net/lukani/lukani/assets/img/blog/blog2.jpg"
+              alt="anh"
+              width="100%"
+            />
+            <h5 class="pt-4">Blog Image Post</h5>
+            <p>By
+              <span style="color: #79a206;">admin/ July 16, 2021</span>
+            </p>
+            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+              pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus praesent</p>
+          </div>
+          <div class="col-md-4">
+            <img
+              src="https://htmldemo.net/lukani/lukani/assets/img/blog/blog3.jpg"
+              alt="anh"
+              width="100%"
+            />
+            <h5 class="pt-4">Post With Gallery</h5>
+            <p>By
+              <span style="color: #79a206;">admin/ July 16, 2021</span>
+            </p>
+            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+              pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus praesent</p>
+          </div>
         </div>
-      </div>
     </div>
+  </div>
 </main>
 
 <app-footer></app-footer>

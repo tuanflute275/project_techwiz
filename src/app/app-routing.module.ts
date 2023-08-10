@@ -12,10 +12,12 @@ import { HeartComponent } from './components/pages/heart/heart.component';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { ProductDetailComponent } from './components/pages/product-detail/product-detail.component';
+import { ProdByCateComponent } from './components/pages/prod-by-cate/prod-by-cate.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shop', component: ShopComponent },
+  { path: 'category/:id', component: ProdByCateComponent },
   { path: 'productDetail/:id', component: ProductDetailComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'blog', component: BlogComponent },

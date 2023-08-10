@@ -12,7 +12,7 @@ main {
       }
     }
     .title {
-      font-size: 50px;
+      font-size: 35px;
     }
   }
 
@@ -141,17 +141,16 @@ main {
     }
   }
 
-
   ul {
     list-style: none;
     padding: 0;
-    li{
+    li {
       margin: 10px 0;
-      a{
+      a {
         text-decoration: none;
         color: #333;
-        transition: all .3s;
-        &:hover{
+        transition: all 0.3s;
+        &:hover {
           color: $main-color;
         }
       }
@@ -195,14 +194,4 @@ main {
   .text-right {
     display: flex;
   }
-}
-
-.box-title{
-  background-color:  #e9ecef;
-  height: 200px;
-}
-
-.box-title h3{
-  margin-top: 40px;
-  font-family: "Lora", serif;
 }

@@ -384,7 +384,20 @@
       "id": 41
     }
   ],
-  "category": [],
+  "category": [
+    {
+      "id": 1,
+      "name": "Outside"
+    },
+    {
+      "id": 2,
+      "name": "Inside"
+    },
+    {
+      "id": 3,
+      "name": "Both Outside And Inside"
+    }
+  ],
   "comments": [
     {
       "comment": "hahahaha",

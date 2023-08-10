@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { FaqComponent } from './components/pages/faq/faq.component';
 import { ProductDetailComponent } from './components/pages/product-detail/product-detail.component';
+import { ProdByCateComponent } from './components/pages/prod-by-cate/prod-by-cate.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ProductDetailComponent } from './components/pages/product-detail/produc
     CartComponent,
     CheckoutComponent,
     FaqComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProdByCateComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { ProductDetailComponent } from './components/pages/product-detail/produc
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FilterPipeModule,
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

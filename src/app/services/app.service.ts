@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class AppService {
   private API_ACCOUNT = 'http://localhost:3000/account/';
   private API_PRODUCT = 'http://localhost:3000/product/';
+  private API_CATEGORY = 'http://localhost:3000/category/';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': "application/json",
@@ -38,15 +39,22 @@ export class AppService {
   }
 
 
+  // category
+  public getCategory() {
+    const url = `${this.API_CATEGORY}`;
+    return this.httpClient.get<any>(url, this.httpOptions);
+  }
+
 
   // product
+
   public getProductById(id: number) {
     const url = `${this.API_PRODUCT}` + '?id=' + id;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
-  public getProductByCategory(cateName: any) {
-    const url = `${this.API_PRODUCT}` + '?category=' + cateName;
+  public getProductByCategory(cateId: any) {
+    const url = `${this.API_PRODUCT}` + '?category_id=' + cateId;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
@@ -57,6 +65,11 @@ export class AppService {
 
   public orderByProduct() {
     const url = `${this.API_PRODUCT}` + '?_sort=views&_order=desc=';
+    return this.httpClient.get<any>(url, this.httpOptions);
+  }
+
+  public filterByPriceRange(min: any, max: any) {
+    const url = `${this.API_PRODUCT}` + `?price_gte=${min}&price_lte=${max}`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 

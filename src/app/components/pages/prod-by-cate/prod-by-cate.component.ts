@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import { HeartService } from 'src/app/services/heart.service';
-import { Options, LabelType } from 'ng5-slider';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  selector: 'app-prod-by-cate',
+  templateUrl: './prod-by-cate.component.html',
+  styleUrls: ['./prod-by-cate.component.scss']
 })
-export class ShopComponent implements OnInit {
+export class ProdByCateComponent implements OnInit {
+  id: any;
   page: number = 1;
   products: any = [];
   carts: any = [];
@@ -28,38 +28,24 @@ export class ShopComponent implements OnInit {
   maxPrice: number = 0;
   filteredProducts: any = [];
 
-  // Slider Options
-  minValue: number = 0;
-  maxValue: number = 100;
-  options: Options = {
-    floor: 0,
-    ceil: 100,
-    translate: (value: number, label: LabelType): string => {
-      switch (label) {
-        case LabelType.Low:
-          this.minPrice = value;
-
-          return '<b>Min price:</b> Rs. ' + value;
-        case LabelType.High:
-          this.maxPrice = value;
-          return '<b>Max price:</b> Rs. ' + value;
-        default:
-          return 'Rs. ' + value;
-      }
-    }
-  };
-
-  // END Slider Options
-
-
   constructor(
     private app: AppService,
     private heartService: HeartService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.fetchProductAPI();
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      // Lấy giá trị của tham số 'id' từ URL
+      this.id = params.get('id') as string;
+
+      // Thực hiện các hành động cần thiết dựa trên ID mới
+      this.fetchProductAPI(+this.id);
+    });
+    this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
+
   }
 
   darkMode = false;
@@ -70,16 +56,18 @@ export class ShopComponent implements OnInit {
   }
 
   filterProductsByPrice() {
-    console.log("Min: " + this.minPrice + " Max: " + this.maxPrice);
-    this.app.filterByPriceRange(this.minPrice, this.maxPrice).subscribe(response => {
-      this.products = response;
-    });
+    this.products = this.products.filter((product: any) =>
+      product.price >= this.minPrice && product.price <= this.maxPrice
+    );
+
 
   }
 
-  fetchProductAPI() {
-    this.app.getProduct().subscribe(response => {
-      this.products = response;
+  fetchProductAPI(cateID: any) {
+    this.app.getProductByCategory(cateID).subscribe(async response => {
+      this.products = await response;
+      return await response;
+
     });
   }
 

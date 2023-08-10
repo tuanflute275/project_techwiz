@@ -12,8 +12,35 @@ main {
       }
     }
     .title {
-      font-size: 35px;
+      font-size: 50px;
     }
   }
 
+}
+
+.box-title{
+  background-color:  #e9ecef;
+  height: 200px;
+}
+
+.box-title h3{
+  margin-top: 40px;
+  font-family: "Lora", serif;
+}
+
+h3{
+  font-family: "Lora", serif;
+
+}
+i{
+  padding-right: 10px;
+}
+
+.container{
+  padding-top: 80px !important;
+}
+
+button:hover{
+  border: 1px solid #79a206 ;
+  background-color: #79a206;
 }

@@ -1,9 +1,7 @@
 <app-header></app-header>
 
-
 <main>
   <div class="text-center box-title">
-    <h3 class="title">Shop</h3>
     <nav class="breadcrumb text-center d-flex justify-content-center">
       <a class="breadcrumb-item default" routerLink="/">Home</a>
       <span class="breadcrumb-item active">Shop</span>
@@ -11,7 +9,7 @@
     <h3 class="title">Shop</h3>
     <div class="container"></div>
   </div>
-  <div class="container mt-5">
+  <div class="container">
     <div class="row">
       <!-- <div class="col-lg-3">
         <form [formGroup]="productFormSearch" (ngSubmit)="submitSearch()" action="">
@@ -67,7 +65,8 @@
         <div class="price pt-3">
           <b>FILTER BY PRICE</b>
           <hr />
-          <!-- <br />
+          <!-- <input type="range" min="0" max="99" name="" id=""> -->
+          <br />
           <div>
             <label for="minPrice">Giá tối thiểu:</label>
             <input type="number" [(ngModel)]="minPrice" name="minPrice" />
@@ -76,13 +75,8 @@
           <div>
             <label for="maxPrice">Giá tối đa:</label>
             <input type="number" [(ngModel)]="maxPrice" name="maxPrice" />
-          </div> -->
+          </div>
 
-          <ng5-slider
-            [(value)]="minValue"
-            [(highValue)]="maxValue"
-            [options]="options"
-          ></ng5-slider>
           <button
             class="btn btn-primary mt-3"
             (click)="filterProductsByPrice()"
