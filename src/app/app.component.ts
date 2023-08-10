@@ -8,6 +8,12 @@ import Swal from 'sweetalert2';
 })
 export class AppComponent {
   title = 'project_angular';
+  darkMode = false;
+
+toggleTheme(){
+  this.darkMode = !this.darkMode;
+  document.documentElement.setAttribute('data-theme', this.darkMode ? 'dark' : 'light')
+}
 
   click() {
     Swal.fire(

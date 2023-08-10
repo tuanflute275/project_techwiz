@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { HeartService } from 'src/app/services/heart.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -52,6 +53,7 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private app: AppService,
+    private heartService: HeartService,
     private comment: CommentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
@@ -124,8 +126,18 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-  onFavorite(id: number) {
-    alert(id)
+  onFavorite(product: number) {
+    console.log(product)
+    Swal.fire(
+      '',
+      'Add to heart successfully !',
+      'success'
+    )
+    this.heartService.postHeart(product).subscribe(response=>{
+      this.heartService.getHeart().subscribe(data=>{
+        console.log(data)
+      })
+    })
   }
 
   onAddToCart(product: any) {

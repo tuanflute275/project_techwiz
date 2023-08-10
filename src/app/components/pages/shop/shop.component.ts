@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import { HeartService } from 'src/app/services/heart.service';
@@ -13,6 +14,18 @@ export class ShopComponent implements OnInit{
   page:number = 1;
   products:any = [];
   carts: any =  [];
+  userFilter: any = { name: '' };
+  productFormSearch: FormGroup = new FormGroup({
+    name: new FormControl('')
+  });
+  priceFormSearch: FormGroup = new FormGroup({
+    start: new FormControl(''),
+    end: new FormControl('')
+  });
+
+  minPrice: number = 0;
+  maxPrice: number = 0;
+  filteredProducts:any = [];
 
   constructor(
     private app:AppService,
@@ -24,10 +37,41 @@ export class ShopComponent implements OnInit{
     this.fetchProductAPI();
   }
 
+  darkMode = false;
+
+  toggleTheme(){
+    this.darkMode = !this.darkMode;
+    document.documentElement.setAttribute('data-theme', this.darkMode ? 'dark' : 'light')
+  }
+
+  filterProductsByPrice() {
+    this.products = this.products.filter((product:any) =>
+      product.price >= this.minPrice && product.price <= this.maxPrice
+    );
+
+    console.log(this.products)
+  }
+
   fetchProductAPI() {
     this.app.getProduct().subscribe(response => {
       this.products = response;
     });
+  }
+
+  submitSearch() {
+    let data = this.productFormSearch.value.name
+    this.app.searchProduct(data).subscribe((response: any) => {
+      this.products = response;
+    })
+  }
+
+  searchByMoney(){
+    let start = this.priceFormSearch.value.start;
+    let end = this.priceFormSearch.value.end;
+
+    console.log(this.products)
+
+
   }
 
   onFavorite(product: number) {

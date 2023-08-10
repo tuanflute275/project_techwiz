@@ -25,7 +25,7 @@ export class HeartComponent implements OnInit{
   getAllHeart(){
     this.heartService.getHeart().subscribe(response=>{
       this.favorites = response;
-      console.log(this.favorites)
+      console.log('lenght ',response.length)
     })
   }
 
