@@ -1,0 +1,89 @@
+@import '../../../../styles.scss';
+
+main {
+  margin-top: 110px;
+  .box-title {
+    padding: 10px 0;
+    .default {
+      text-decoration: none;
+      color: #999999;
+      &:hover {
+        color: $main-color;
+      }
+    }
+    .title {
+      font-size: 35px;
+    }
+  }
+
+  .show {
+    &:hover .hide-cus {
+      opacity: 1;
+    }
+    .hide-cus {
+      opacity: 0;
+      transition: all 0.5s;
+      .icon-heart {
+        top: 15px;
+        left: 15px;
+        a {
+          background-color: #fff;
+          width: 35px;
+          border-radius: 50%;
+          height: 35px;
+          text-align: center;
+          line-height: 32px;
+          display: inline-block;
+          margin-bottom: 8px;
+          &:hover img {
+            opacity: 1;
+          }
+          img {
+            max-width: 18px;
+            opacity: 0.4;
+            display: inline-block;
+          }
+        }
+      }
+      .btn-add {
+        bottom: 146px;
+        width: 100%;
+        a {
+          bottom: 0;
+          width: 100%;
+          background-color: #000;
+          text-align: center;
+          color: #fff;
+          text-decoration: none;
+          padding: 8px 15px;
+          display: inline-block;
+          text-transform: uppercase;
+          font-size: 16px;
+          transition: all 0.4s;
+          &:hover {
+            background: $main-color;
+          }
+        }
+      }
+    }
+  }
+
+  .card-body{
+    .star{
+      i{
+        margin: 2px 5px;
+      }
+    }
+    .box-price{
+      .card-price{
+        color: $main-color;
+        font-size: 19px;
+      }
+      .card-sale_price{
+        text-decoration: line-through;
+        color: #ccc;
+      }
+    }
+  }
+
+}

@@ -17,10 +17,19 @@
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example1c">Your Name</label>
                       <input type="text" formControlName="name" id="form3Example1c" class="form-control" />
-                      <div *ngIf="signupForm.controls.name.touched && !signupForm.controls.name.valid" style="color: red;">name is require!</div>
+                      <div class="box-message"
+                      *ngIf="signupForm.controls.name.invalid && (signupForm.controls.name.touched || signupForm.controls.name.dirty)">
+                      <div *ngIf="signupForm.controls.name.errors">
 
-                      <!-- <div *ngIf="signupForm.controls.name.errors.require" style="color: red;">This field is required!</div>
-                      <div *ngIf="signupForm.controls.name.errors.pattern" style="color: red;">This field is valid!</div> -->
+                        <div *ngIf="signupForm.controls.name.errors['required']  " style="color: red;">
+                          Name is require!
+                        </div>
+                        <div *ngIf="signupForm.controls.name.errors['minlength'] " style="color: red;">
+                          Min length 5 chars
+                        </div>
+
+                      </div>
+                    </div>
                     </div>
                   </div>
 
@@ -29,10 +38,18 @@
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">Your Email</label>
                       <input type="email" formControlName="email" id="form3Example3c" class="form-control" />
-                      <div *ngIf="signupForm.controls.email.touched && !signupForm.controls.email.valid" style="color: red;">email is require!</div>
+                      <div class="box-message"
+                    *ngIf="signupForm.controls.email.invalid && (signupForm.controls.email.touched || signupForm.controls.email.dirty)">
+                    <div *ngIf="signupForm.controls.email.errors">
 
-                      <!-- <div *ngIf="signupForm.controls.email.errors.require" style="color: red;">This field is required!</div>
-                      <div *ngIf="signupForm.controls.email.errors.pattern" style="color: red;">This field is valid!</div> -->
+                      <div *ngIf="signupForm.controls.email.errors['required']" style="color: red;">email is
+                        require!
+                      </div>
+                      <div *ngIf="signupForm.controls.email.errors['email'] " style="color: red;">
+                        Incorrect Email Format
+                      </div>
+                    </div>
+                  </div>
                     </div>
                   </div>
 
@@ -41,9 +58,19 @@
                     <div class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example4c">Password</label>
                       <input type="password" formControlName="password" id="form3Example4c" class="form-control" />
-                      <div *ngIf="signupForm.controls.password.touched && !signupForm.controls.password.valid" style="color: red;">password is require!</div>
-                      <!-- <div *ngIf="signupForm.controls.email.password.require" style="color: red;">This field is required!</div>
-                      <div *ngIf="signupForm.controls.email.password.pattern" style="color: red;">This field is valid!</div> -->
+                      <div class="box-message"
+                      *ngIf="signupForm.controls.password.invalid && (signupForm.controls.password.touched || signupForm.controls.password.dirty)">
+                      <div *ngIf="signupForm.controls.password.errors">
+
+                        <div *ngIf="signupForm.controls.password.errors['required']" style="color: red;">password is
+                          require!
+                        </div>
+                        <div *ngIf="signupForm.controls.password.errors['minlength'] " style="color: red;">
+                          Min length 6 chars
+                        </div>
+
+                      </div>
+                    </div>
                     </div>
                   </div>
 
@@ -57,7 +84,6 @@
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" class="btn btn-warning text-white btn-lg" [disabled]="!signupForm.valid">Register</button>
-                    <a routerLink="/login" type="button" class="btn btn-info btn-lg text-white btn-login">Login</a>
                   </div>
 
                 </form>

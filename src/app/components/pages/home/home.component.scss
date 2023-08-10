@@ -1,0 +1,124 @@
+@import '../../../../styles.scss';
+
+.img-overlay{
+  position: relative;
+  z-index: 0 !important;
+}
+
+.banner-text{
+  position: absolute;
+  z-index: 1000 !important;
+  color: #333;
+}
+.carousel-caption-custom{
+  position: absolute;
+  right: 15%;
+  bottom: 20px;
+  left: 15%;
+  top: 20%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: left;
+}
+
+.carousel-caption-custom p{
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.carousel-caption-custom button{
+  border: none;
+  border: 1px solid #333;
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: black;
+}
+
+.carousel-caption-custom button:hover{
+  background-color: green;
+}
+
+
+
+
+.show {
+  &:hover .hide-cus {
+    opacity: 1;
+  }
+  .hide-cus {
+    opacity: 0;
+    transition: all 0.5s;
+    .icon-heart {
+      top: 15px;
+      left: 15px;
+      a {
+        background-color: #fff;
+        width: 35px;
+        border-radius: 50%;
+        height: 35px;
+        text-align: center;
+        line-height: 32px;
+        display: inline-block;
+        margin-bottom: 8px;
+        &:hover img {
+          opacity: 1;
+        }
+        img {
+          max-width: 18px;
+          opacity: 0.4;
+          display: inline-block;
+        }
+      }
+    }
+    .btn-add {
+      bottom: 146px;
+      width: 100%;
+      a {
+        bottom: 0;
+        width: 100%;
+        background-color: #000;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 15px;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 16px;
+        transition: all 0.4s;
+        &:hover {
+          background: $main-color;
+        }
+      }
+    }
+  }
+}
+
+.card-body{
+  .star{
+    i{
+      margin: 2px 5px;
+    }
+  }
+  .box-price{
+    .card-price{
+      color: $main-color;
+      font-size: 19px;
+    }
+    .card-sale_price{
+      text-decoration: line-through;
+      color: #ccc;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .heading{
+    font-size: 25px;
+  }
+}

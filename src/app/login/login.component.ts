@@ -20,16 +20,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      // email:[null, [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
     if (this.getUData()) {
-      this.router.navigate(['/'])
-      ;
+      this.router.navigate(['/']);
     }
   }
+
+
 
   getUData(): any {
     const data = localStorage.getItem("u_data") ? JSON.parse(localStorage.getItem("u_data") as string) : null;

@@ -12,22 +12,36 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layouts/header/header.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
-import { AboutComponent } from './components/pages/about/about.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ShopComponent } from './components/pages/shop/shop.component';
+import { BlogComponent } from './components/pages/blog/blog.component';
+import { ContactComponent } from './components/pages/contact/contact.component';
+import { HeartComponent } from './components/pages/heart/heart.component';
+import { CartComponent } from './components/pages/cart/cart.component';
+import { CheckoutComponent } from './components/pages/checkout/checkout.component';
+import { FaqComponent } from './components/pages/faq/faq.component';
+import { ProductDetailComponent } from './components/pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AboutComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ShopComponent,
+    BlogComponent,
+    ContactComponent,
+    HeartComponent,
+    CartComponent,
+    CheckoutComponent,
+    FaqComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
