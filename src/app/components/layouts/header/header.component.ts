@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   heart: any = 1;
-  logo = '../../../../assets/images/logo/logo.jpg'
+  logo = 'https://htmldemo.net/lukani/lukani/assets/img/logo/logo.png'
   avatar = '../../../../assets/images/logo/avatar_admin.jpg'
 
   constructor(private router: Router){}
