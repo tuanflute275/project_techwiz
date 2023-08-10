@@ -25,7 +25,7 @@ header {
     padding: 4px 0;
     &::before {
       content: "";
-      width: 100%;
+      width: 90%;
       height: 4px;
       position: absolute;
       left: 0;
@@ -101,6 +101,8 @@ box-shadow: 0 0 0 #fff;
   cursor: pointer !important;
 }
 .dropdown-menu-custom{
-  background-color: transparent !important;
   border: none !important;
+}
+.dropdown-item-custom:hover{
+  background-color: transparent !important;
 }

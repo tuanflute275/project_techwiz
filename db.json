@@ -20,6 +20,7 @@
       "price": 85,
       "sale_price": 12,
       "category_id": 1,
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 1
     },
     {
@@ -28,6 +29,7 @@
       "price": 71,
       "sale_price": 8,
       "category_id": 2,
+      "description": "Plant pots are handmade entirely with organic, eco-friendly materials. With a durability of up to 3-5 years and after decomposition, it can be used as fertilizer for plants.",
       "id": 2
     },
     {
@@ -36,6 +38,7 @@
       "price": 70,
       "sale_price": 6,
       "category_id": 3,
+      "description": "The tiger tongue tree is a feng shui plant that is sought after by households in Asia with the tradition that it can exorcise and protect their homes. The fertilization process is extremely simple because it can live in harsh environments, does not need too much watering, is exposed to a lot of light and plants will thrive.",
       "id": 3
     },
     {
@@ -44,6 +47,7 @@
       "price": 68,
       "sale_price": 10,
       "category_id": 1,
+      "description": "Aloe vera is considered a panacea in the pharmaceutical industry, a cooling food in cuisine, a plant that can be displayed in the house.",
       "id": 4
     },
     {
@@ -52,6 +56,7 @@
       "price": 88,
       "sale_price": 15,
       "category_id": 3,
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 5
     },
     {
@@ -60,6 +65,7 @@
       "price": 80,
       "sale_price": 8,
       "category_id": 1,
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 6
     },
     {
@@ -68,6 +74,7 @@
       "price": 54,
       "sale_price": 0,
       "category_id": 2,
+      "description": "Extremely popular with botanists and plant enthusiasts. With the unique color and uniqueness of the tree.",
       "id": 7
     },
     {
@@ -76,6 +83,7 @@
       "price": 71,
       "sale_price": 10,
       "category_id": 1,
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 8
     },
     {
@@ -84,6 +92,7 @@
       "price": 72,
       "sale_price": 5,
       "category_id": 2,
+      "description": "Stone lotus is a difficult plant to grow and extremely picky about soil. Choose fertile soil and clean water just enough for this plant. Highly sought after for its variety, rich and fancy colors.",
       "id": 9
     },
     {
@@ -92,6 +101,7 @@
       "price": 30,
       "sale_price": 2,
       "category_id": 3,
+      "description": "It is a tree with cluster roots and tall stems from the mountains near the sea. Therefore, they are very water-loving and are often planted in feng shui rock holes. It is sought after for its high feng shui properties and brings good luck to the owner.",
       "id": 10
     },
     {
@@ -100,6 +110,7 @@
       "price": 57,
       "sale_price": 5,
       "category_id": 3,
+      "description": "Stone lotus is a difficult plant to grow and extremely picky about soil. Choose fertile soil and clean water just enough for this plant. Highly sought after for its variety, rich and fancy colors.",
       "id": 11
     },
     {
@@ -108,6 +119,7 @@
       "price": 60,
       "sale_price": 6,
       "category_id": 2,
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 12
     },
     {
@@ -116,6 +128,7 @@
       "price": 84,
       "sale_price": 14,
       "category_id": 1,
+      "description": "It is a tree with cluster roots and tall stems from the mountains near the sea. Therefore, they are very water-loving and are often planted in feng shui rock holes. It is sought after for its high feng shui properties and brings good luck to the owner.",
       "id": 13
     },
     {
@@ -124,6 +137,7 @@
       "price": 55,
       "sale_price": 6,
       "category_id": 2,
+      "description": "Extremely popular with botanists and plant enthusiasts. With the unique color and uniqueness of the tree.",
       "id": 14
     },
     {
@@ -132,6 +146,7 @@
       "price": 36,
       "sale_price": 12,
       "category_id": 3,
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 15
     },
     {
@@ -140,6 +155,7 @@
       "price": 62,
       "sale_price": 2,
       "category_id": 1,
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 16
     },
     {
@@ -148,6 +164,7 @@
       "price": 90,
       "sale_price": 18,
       "category_id": 2,
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 17
     },
     {
@@ -156,6 +173,7 @@
       "price": 49,
       "sale_price": 4,
       "category_id": 1,
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 18
     },
     {
@@ -164,6 +182,7 @@
       "price": 76,
       "sale_price": 14,
       "category_id": 2,
+      "description": "Stone lotus is a difficult plant to grow and extremely picky about soil. Choose fertile soil and clean water just enough for this plant. Highly sought after for its variety, rich and fancy colors.",
       "id": 19
     },
     {
@@ -172,6 +191,7 @@
       "price": 92,
       "sale_price": 20,
       "category_id": 3,
+      "description": "Plant pots are handmade entirely with organic, eco-friendly materials. With a durability of up to 3-5 years and after decomposition, it can be used as fertilizer for plants.",
       "id": 20
     },
     {
@@ -180,6 +200,7 @@
       "price": 98,
       "sale_price": 20,
       "category_id": 2,
+      "description": "Stone lotus is a difficult plant to grow and extremely picky about soil. Choose fertile soil and clean water just enough for this plant. Highly sought after for its variety, rich and fancy colors.",
       "id": 21
     },
     {
@@ -188,6 +209,7 @@
       "price": 88,
       "sale_price": 12,
       "category_id": 1,
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 22
     },
     {
@@ -196,6 +218,7 @@
       "price": 68,
       "sale_price": 10,
       "category_id": 2,
+      "description": "Extremely popular with botanists and plant enthusiasts. With the unique color and uniqueness of the tree.",
       "id": 23
     },
     {
@@ -204,6 +227,7 @@
       "price": 40,
       "sale_price": 6,
       "category_id": 1,
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 24
     },
     {
@@ -212,6 +236,7 @@
       "price": 35,
       "sale_price": 0,
       "category_id": 2,
+      "description": "Aloe vera is considered a panacea in the pharmaceutical industry, a cooling food in cuisine, a plant that can be displayed in the house.",
       "id": 25
     },
     {
@@ -220,6 +245,7 @@
       "price": 59,
       "sale_price": 10,
       "category_id": 3,
+      "description": "The tiger tongue tree is a feng shui plant that is sought after by households in Asia with the tradition that it can exorcise and protect their homes. The fertilization process is extremely simple because it can live in harsh environments, does not need too much watering, is exposed to a lot of light and plants will thrive.",
       "id": 26
     },
     {
@@ -228,6 +254,7 @@
       "price": 35,
       "sale_price": 3,
       "category_id": 1,
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 27
     },
     {
@@ -236,6 +263,7 @@
       "price": 74,
       "sale_price": 12,
       "category_id": 3,
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 28
     },
     {
@@ -244,6 +272,7 @@
       "price": 50,
       "sale_price": 10,
       "category_id": 1,
+      "description": "Extremely popular with botanists and plant enthusiasts. With the unique color and uniqueness of the tree.",
       "id": 29
     },
     {
@@ -252,6 +281,7 @@
       "price": 74,
       "sale_price": 8,
       "category_id": 2,
+      "description": "Stone lotus is a difficult plant to grow and extremely picky about soil. Choose fertile soil and clean water just enough for this plant. Highly sought after for its variety, rich and fancy colors.",
       "id": 30
     },
     {
@@ -260,6 +290,7 @@
       "price": 62,
       "sale_price": 6,
       "category_id": 1,
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 31
     },
     {
@@ -268,6 +299,7 @@
       "price": 51,
       "sale_price": 8,
       "category_id": 2,
+      "description": "Plant pots are handmade entirely with organic, eco-friendly materials. With a durability of up to 3-5 years and after decomposition, it can be used as fertilizer for plants.",
       "id": 32
     },
     {
@@ -276,6 +308,7 @@
       "price": 90,
       "sale_price": 18,
       "category_id": 1,
+      "description": "Plant pots are handmade entirely with organic, eco-friendly materials. With a durability of up to 3-5 years and after decomposition, it can be used as fertilizer for plants.",
       "id": 33
     },
     {
@@ -284,6 +317,7 @@
       "price": 94,
       "sale_price": 15,
       "category_id": 1,
+      "description": "The tiger tongue tree is a feng shui plant that is sought after by households in Asia with the tradition that it can exorcise and protect their homes. The fertilization process is extremely simple because it can live in harsh environments, does not need too much watering, is exposed to a lot of light and plants will thrive.",
       "id": 34
     },
     {
@@ -292,6 +326,7 @@
       "price": 94,
       "sale_price": 16,
       "category_id": 2,
+      "description": "Aloe vera is considered a panacea in the pharmaceutical industry, a cooling food in cuisine, a plant that can be displayed in the house.",
       "id": 35
     },
     {
@@ -300,6 +335,7 @@
       "price": 98,
       "sale_price": 15,
       "category_id": 3,
+      "description": "The mini pine tree is a mutant tree, used by research scientists to celebrate Christmas for families who like small things.",
       "id": 36
     },
     {
@@ -308,6 +344,7 @@
       "price": 86,
       "sale_price": 12,
       "category_id": 2,
+      "description": "Extremely popular with botanists and plant enthusiasts. With the unique color and uniqueness of the tree.",
       "id": 37
     },
     {
@@ -316,6 +353,7 @@
       "price": 96,
       "sale_price": 14,
       "category_id": 1,
+      "description": "With high growth ability, strong development, low absorption of nutrients, so for busy customers who do not have much time to take care of, popcorn is an extremely sought-after plant and is available on every store shelf. ",
       "id": 38
     },
     {
@@ -324,6 +362,7 @@
       "price": 84,
       "sale_price": 10,
       "category_id": 3,
+      "description": "Stone lotus is a difficult plant to grow and extremely picky about soil. Choose fertile soil and clean water just enough for this plant. Highly sought after for its variety, rich and fancy colors.",
       "id": 39
     },
     {
@@ -332,6 +371,7 @@
       "price": 68,
       "sale_price": 8,
       "category_id": 2,
+      "description": "It is a tree with cluster roots and tall stems from the mountains near the sea. Therefore, they are very water-loving and are often planted in feng shui rock holes. It is sought after for its high feng shui properties and brings good luck to the owner.",
       "id": 40
     },
     {
@@ -340,6 +380,7 @@
       "price": 52,
       "sale_price": 2,
       "category_id": 1,
+      "description": "The plant is very easy to grow, perfectly able to grow in harsh or nutrient-rich environments. Plant characteristics, capable of developing new seedlings on leaves, stems, leaf blades, leaf veins.",
       "id": 41
     }
   ],
@@ -365,6 +406,7 @@
       "id": 2
     }
   ],
+  "carts": [],
   "hearts": [
     {
       "name": "Fringilla Augue",
@@ -381,14 +423,6 @@
       "sale_price": 8,
       "category_id": 1,
       "id": 6
-    },
-    {
-      "name": "Placerat Vestibulum",
-      "image": "https://htmldemo.net/lukani/lukani/assets/img/product/product5.jpg",
-      "price": 71,
-      "sale_price": 8,
-      "category_id": 2,
-      "id": 2
     }
   ]
 }

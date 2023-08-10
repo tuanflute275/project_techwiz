@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-light px-4 py-2 d-flex align-items-center"
   >
     <a class="navbar-brand" routerLink="/">
-      <img [src]="logo" alt="anh" width="200px">
+      <img [src]="logo" alt="anh" width="200px" />
     </a>
     <button
       class="navbar-toggler d-lg-none"
@@ -22,6 +22,26 @@
           <a class="nav-link" routerLink="/"
             >Home <span class="sr-only">(current)</span></a
           >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link text-dark dropdown-toggle"
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Categories
+          </a>
+          <div class="dropdown-menu dropdown-menu-custom">
+            <a
+              *ngFor="let item of categories"
+              routerLink="/category/{{ item.id }}"
+              class="dropdown-item nav-link text-dark dropdown-item-custom"
+              href="#"
+              >{{ item.name }}</a
+            >
+          </div>
         </li>
         <li class="nav-item active">
           <a class="nav-link" routerLink="/shop"
@@ -42,26 +62,6 @@
           <a class="nav-link" routerLink="/contact"
             >Contact <span class="sr-only">(current)</span></a
           >
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link text-dark dropdown-toggle"
-            href="#"
-            role="button"
-            data-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Categories
-          </a>
-          <div class="dropdown-menu dropdown-menu-custom">
-            <a
-              *ngFor="let item of categories"
-              routerLink="/category/{{ item.id }}"
-              class="dropdown-item text-dark"
-              href="#"
-              >{{ item.name }}</a
-            >
-          </div>
         </li>
       </ul>
 

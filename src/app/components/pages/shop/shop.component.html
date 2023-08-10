@@ -7,33 +7,10 @@
       <a class="breadcrumb-item default" routerLink="/">Home</a>
       <span class="breadcrumb-item active">Shop</span>
     </nav>
-    <h3 class="title">Shop</h3>
     <div class="container"></div>
   </div>
   <div class="container mt-5">
     <div class="row">
-      <!-- <div class="col-lg-3">
-        <form [formGroup]="productFormSearch" (ngSubmit)="submitSearch()" action="">
-          <div id="search-box">
-            <input type="text" id="search-box__input" formControlName="name" placeholder="Search..">
-            <button type="submit" id="search-box__btn">
-              <i class="cil-search"></i>
-            </button>
-          </div>
-        </form>
-
-        <div>
-          <label for="minPrice">Giá tối thiểu:</label>
-          <input type="number" [(ngModel)]="minPrice" name="minPrice">
-        </div>
-
-        <div>
-          <label for="maxPrice">Giá tối đa:</label>
-          <input type="number" [(ngModel)]="maxPrice" name="maxPrice">
-        </div>
-
-        <button class="btn btn-primary" (click)="filterProductsByPrice()">Lọc</button>
-      </div> -->
       <div class="col-md-3">
         <form
           [formGroup]="productFormSearch"
@@ -54,28 +31,18 @@
         </form>
 
         <div class="women mt-3">
-          <b>WOMEN</b>
+          <b>CATEGORIES</b>
           <hr />
           <ul>
-            <li><a href="">Shoes</a></li>
-            <li><a href="">Bags</a></li>
-            <li><a href="">Clothing</a></li>
+            <li *ngFor="let item of categories">
+              <a routerLink="/category/{{ item.id }}">{{ item.name }}</a>
+            </li>
           </ul>
         </div>
 
         <div class="price pt-3">
           <b>FILTER BY PRICE</b>
           <hr />
-          <!-- <br />
-          <div>
-            <label for="minPrice">Giá tối thiểu:</label>
-            <input type="number" [(ngModel)]="minPrice" name="minPrice" />
-          </div>
-
-          <div>
-            <label for="maxPrice">Giá tối đa:</label>
-            <input type="number" [(ngModel)]="maxPrice" name="maxPrice" />
-          </div> -->
 
           <ng5-slider
             [(value)]="minValue"
@@ -83,10 +50,10 @@
             [options]="options"
           ></ng5-slider>
           <button
-            class="btn btn-primary mt-3"
+            class="btn btn-primary mt-3 rounded-0 btn-block btn-sm"
             (click)="filterProductsByPrice()"
           >
-            Lọc
+            Filter Now
           </button>
         </div>
 
@@ -138,7 +105,10 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div class="row">
+        <div  *ngIf="products.length <= 0" class="text-center">
+          <p >Nothing To Show Up</p>
+        </div>
+        <div class="row" *ngIf="products.length > 0">
           <div
             class="col-md-4"
             *ngFor="
@@ -182,10 +152,10 @@
                   class="box-price d-flex justify-content-center align-items-center"
                 >
                   <p class="card-price mr-2 font-weight-bold">
-                    {{ item.price | currency : "USD" : "symbol" : "0.3" }}
+                    {{ item.price | currency : "USD" : "symbol" : "0.2" }}
                   </p>
                   <p class="card-sale_price">
-                    {{ item.sale_price | currency : "USD" : "symbol" : "0.3" }}
+                    {{ item.sale_price | currency : "USD" : "symbol" : "0.2" }}
                   </p>
                 </div>
               </div>
@@ -197,6 +167,7 @@
           (pageChange)="page = $event"
         ></pagination-controls>
       </div>
+
     </div>
   </div>
 </main>
