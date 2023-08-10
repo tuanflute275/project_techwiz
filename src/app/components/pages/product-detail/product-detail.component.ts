@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { HeartService } from 'src/app/services/heart.service';
@@ -9,47 +9,16 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
+  id: any;
   formPostData: any = FormGroup;
-  dataCmt:any = [];
+  dataCmt: any = [];
+  categories: any = [];
   carts: any = [];
-  productDetail:any;
-  products: any = [
-    {
-      "name": "Recycled Frozen Pizza",
-      "image": "https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg",
-      "price": 88,
-      "sale_price": 15,
-      "category_id": 3,
-      "id": 5
-    },
-    {
-      "name": "Sleek Rubber Chicken",
-      "image": "https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg",
-      "price": 80,
-      "sale_price": 8,
-      "category_id": 1,
-      "id": 6
-    },
-    {
-      "name": "Luxurious Metal Table",
-      "image": "https://htmldemo.net/lukani/lukani/assets/img/product/product4.jpg",
-      "price": 54,
-      "sale_price": 0,
-      "category_id": 2,
-      "id": 7
-    },
-    {
-      "name": "Handcrafted Cotton",
-      "image": "https://htmldemo.net/lukani/lukani/assets/img/product/product6.jpg",
-      "price": 71,
-      "sale_price": 10,
-      "category_id": 1,
-      "id": 8
-    }
-  ];
+  productDetail: any;
+  products: any;
 
   constructor(
     private app: AppService,
@@ -57,31 +26,52 @@ export class ProductDetailComponent implements OnInit {
     private comment: CommentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
-    ) { }
+  ) {}
 
   ngOnInit(): void {
-
     this.formPostData = this.formBuilder.group({
       comment: [''],
       name: [''],
       email: [''],
     });
 
-    let id = this.route.snapshot.params['id'];
-    this.app.getProductById(id).subscribe(response => {
-      console.log('response by id', response)
-      this.productDetail = response[0];
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      window.scrollTo(0, 0);
+      // Lấy giá trị của tham số 'id' từ URL
+      this.id = params.get('id') as string;
+
+      // Thực hiện các hành động cần thiết dựa trên ID mới
+      this.app.getProductById(this.id).subscribe((response) => {
+        console.log('response by id', response);
+        this.productDetail = response[0];
+        this.getListRelatedProd(response[0].category_id);
+      });
     });
+    let id = this.route.snapshot.params['id'];
 
-    this.fetchCommentAPI()
-
+    this.fetchCommentAPI();
+    this.getListCategory();
   }
 
-  fetchCommentAPI(){
-    this.comment.getComment().subscribe(response=>{
+  fetchCommentAPI() {
+    this.comment.getComment().subscribe((response) => {
       this.dataCmt = response;
-      console.log(this.dataCmt)
-    })
+      console.log(this.dataCmt);
+    });
+  }
+
+  getListCategory() {
+    this.app.getCategory().subscribe((res) => {
+      console.log(res);
+      this.categories = res;
+    });
+  }
+
+  getListRelatedProd(cateId: any) {
+    console.log(cateId);
+    this.app.getRelatedProduct(cateId).subscribe((res) => {
+      this.products = res;
+    });
   }
 
   handleSubmit() {
@@ -92,18 +82,18 @@ export class ProductDetailComponent implements OnInit {
       email: formData.email,
     };
 
-    console.log(data)
-    this.comment.postComment(data).subscribe(response=>{
-      this.fetchCommentAPI()
-      this.formPostData.reset()
-    })
+    console.log(data);
+    this.comment.postComment(data).subscribe((response) => {
+      this.fetchCommentAPI();
+      this.formPostData.reset();
+    });
   }
 
-  updateCmt(item: any){
-    console.log(item)
+  updateCmt(item: any) {
+    console.log(item);
   }
 
-  removeCmt(id:number) {
+  removeCmt(id: number) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -111,19 +101,15 @@ export class ProductDetailComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-        this.comment.deleteComment(id).subscribe(response=>{
-          this.fetchCommentAPI()
-        })
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        this.comment.deleteComment(id).subscribe((response) => {
+          this.fetchCommentAPI();
+        });
       }
-    })
+    });
   }
 
   onFavorite(product: number) {
@@ -141,12 +127,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onAddToCart(product: any) {
-    let idx = this.carts.findIndex((item: any) => item.id === product.id)
-    console.log(product)
+    let idx = this.carts.findIndex((item: any) => item.id === product.id);
+    console.log(product);
     if (idx >= 0) {
       this.carts[idx].quantity += 1;
     } else {
-
       let cartItem: any = {
         id: product.id,
         name: product.name,
@@ -154,19 +139,14 @@ export class ProductDetailComponent implements OnInit {
         price: product.sale_price ? product.sale_price : product.price,
         quantity: 1,
         subtotal: function () {
-          return this.price * this.quantity
-        }
-      }
-      Swal.fire(
-        '',
-        'Add to cart successfully !',
-        'success'
-      )
-      this.carts.push(cartItem)
+          return this.price * this.quantity;
+        },
+      };
+      Swal.fire('', 'Add to cart successfully !', 'success');
+      this.carts.push(cartItem);
     }
     //save storage
-    this.app.saveCart(this.carts)
+    this.app.saveCart(this.carts);
     console.log(this.carts);
-
   }
 }

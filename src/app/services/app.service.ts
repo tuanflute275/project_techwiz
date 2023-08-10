@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppService {
   private API_ACCOUNT = 'http://localhost:3000/account/';
@@ -10,21 +10,20 @@ export class AppService {
   private API_CATEGORY = 'http://localhost:3000/category/';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': "application/json",
+      'Content-Type': 'application/json',
       // Authorization: 'my-auth-token'
     }),
   };
 
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   public singUp(data: any) {
-    const url = `${this.API_ACCOUNT}`
+    const url = `${this.API_ACCOUNT}`;
     return this.httpClient.post<any>(url, data, this.httpOptions);
   }
 
   public login() {
-    const url = `${this.API_ACCOUNT}`
+    const url = `${this.API_ACCOUNT}`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
@@ -34,10 +33,9 @@ export class AppService {
   }
 
   public getProduct() {
-    const url = `${this.API_PRODUCT}`
+    const url = `${this.API_PRODUCT}`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
-
 
   // category
   public getCategory() {
@@ -45,9 +43,12 @@ export class AppService {
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
+  public getCategoryByID(id: any) {
+    const url = `${this.API_CATEGORY}?id=${id}`;
+    return this.httpClient.get<any>(url, this.httpOptions);
+  }
 
   // product
-
   public getProductById(id: number) {
     const url = `${this.API_PRODUCT}` + '?id=' + id;
     return this.httpClient.get<any>(url, this.httpOptions);
@@ -55,6 +56,11 @@ export class AppService {
 
   public getProductByCategory(cateId: any) {
     const url = `${this.API_PRODUCT}` + '?category_id=' + cateId;
+    return this.httpClient.get<any>(url, this.httpOptions);
+  }
+
+  public getRelatedProduct(cateId: any) {
+    const url = `${this.API_PRODUCT}` + '?category_id=' + cateId + '&_limit=4&_sort=id&_order=desc' ;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
@@ -73,42 +79,40 @@ export class AppService {
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
-
   //cart and favorite
   getAccountInfo() {
-    let dataAccount = localStorage.getItem('u_data')
+    let dataAccount = localStorage.getItem('u_data');
     return dataAccount;
   }
 
   getCarts() {
-    let cartJson = localStorage.getItem('cart')
+    let cartJson = localStorage.getItem('cart');
     if (cartJson) {
-      return JSON.parse(cartJson)
+      return JSON.parse(cartJson);
     } else {
       return [];
     }
   }
 
   saveCart(carts: any) {
-    let cartJson = JSON.stringify(carts)
-    localStorage.setItem('cart', cartJson)
+    let cartJson = JSON.stringify(carts);
+    localStorage.setItem('cart', cartJson);
   }
 
   getCartTotalPrice() {
-    let carts = this.getCarts()
+    let carts = this.getCarts();
     let total: number = 0;
     carts.forEach((item: any) => {
-      total += item.quantity * item.price
+      total += item.quantity * item.price;
     });
     return total;
   }
   getCartTotalQuantity() {
-    let carts = this.getCarts()
+    let carts = this.getCarts();
     let total: number = 0;
     carts.forEach((item: any) => {
-      total += item.quantity
+      total += item.quantity;
     });
     return total;
   }
-
 }

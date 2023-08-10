@@ -4,16 +4,21 @@
   <div class="text-center box-title">
     <nav class="breadcrumb text-center d-flex justify-content-center">
       <a class="breadcrumb-item default" routerLink="/">Home</a>
-      <span class="breadcrumb-item active">Contact</span>
+      <span class="breadcrumb-item active">{{ productDetail.name }}</span>
     </nav>
-    <h3 class="title">Product Detail</h3>
-    <div class="container">
-    </div>
+    <h3 class="title">{{ productDetail.name }}</h3>
+    <div class="container"></div>
   </div>
   <div class="container p-2">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <img class="img-product" src="{{ productDetail.image }}" alt="" width="540px" height="540px">
+        <img
+          class="img-product"
+          src="{{ productDetail.image }}"
+          alt=""
+          width="540px"
+          height="540px"
+        />
       </div>
 
       <div class="col-md-6">
@@ -24,31 +29,63 @@
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <p>(customer review)</p>
-        <p class="sale_price font-weight-bold">{{ productDetail.price |currency:"USD" }}<del
-            class="ml-2 font-weight-normal">{{ productDetail.sale_price |currency:"USD" }}</del></p>
+        <p class="sale_price font-weight-bold">
+          {{ productDetail.price | currency : "USD"
+          }}<del class="ml-2 font-weight-normal">{{
+            productDetail.sale_price | currency : "USD"
+          }}</del>
+        </p>
         <p>
           {{ productDetail.description }}
         </p>
-        <hr>
+        <hr />
         <div class="row align-items-center">
           <div class="col-lg-6 col-md-6 pr-0 col-sm-12 quantity-respond">
             <div class="d-flex align-items-center">
               <p class="mb-0 mr-2">Quantity</p>
-              <input type="number" value="1" min="1" max="99" class="form-control">
+              <input
+                type="number"
+                value="1"
+                min="1"
+                max="99"
+                class="form-control"
+              />
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12">
-            <button type="button" name="" id="" class="btn btn-success btn-block">Add To <i
-                class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+            <button
+              type="button"
+              name=""
+              id=""
+              class="btn btn-success btn-block"
+            >
+              Add To <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
         <div class="prod-action mt-3">
-          <button class="btn btn-outline-none btn-block text-left pb-0 pl-0 action-btn">+ Add to wishlist</button>
-          <button class="btn btn-outline-none btn-block text-left pb-0 pl-0 action-btn">+ Compare</button>
+          <button
+            class="btn btn-outline-none btn-block text-left pb-0 pl-0 action-btn"
+          >
+            + Add to wishlist
+          </button>
+          <button
+            class="btn btn-outline-none btn-block text-left pb-0 pl-0 action-btn"
+          >
+            + Compare
+          </button>
         </div>
         <div class="prod-des mt-3">
-          <p>SKU: "Render ID Here"</p>
-          <p>Category: "Render Category Here"</p>
+          <p>SKU: {{ productDetail.id }}</p>
+
+          <p *ngFor="let item of categories">
+            <span *ngIf="item.id == productDetail.category_id">
+              Category:
+              <a class="action-btn" routerLink="/category/{{ item.id }}">{{
+                item.name
+              }}</a>
+            </span>
+          </p>
         </div>
 
         <div class="prod-social d-flex ">
@@ -76,44 +113,64 @@
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         {{ productDetail.description }}
       </div>
-      <h3 class="my-5">Reviews </h3>
+      <h3 class="my-5">Reviews</h3>
       <div class="" id="">
         <h5>2 Review For {{ productDetail.name }}</h5>
         <div class="list-comment">
           <div class="media mb-2" *ngFor="let item of dataCmt">
-            <img src="https://htmldemo.net/lukani/lukani/assets/img/blog/comment2.jpg" class="mr-3" alt="...">
+            <img
+              src="https://htmldemo.net/lukani/lukani/assets/img/blog/comment2.jpg"
+              class="mr-3"
+              alt="..."
+            />
             <div class="media-body rounded-0 card p-3 pt-0">
               <h5 class="mt-0">{{ item.name }}</h5>
               <div class="d-flex p-0 m-0">
-                <a class="mr-3" (click)="updateCmt(item)" class="update-comment"><i class="fa-solid fa-pencil"></i></a>
+                <a class="mr-3" (click)="updateCmt(item)" class="update-comment"
+                  ><i class="fa-solid fa-pencil"></i
+                ></a>
                 <p class="ml-3">{{ item.comment }}</p>
               </div>
               <a (click)="removeCmt(item.id)" class="delete-comment">x</a>
             </div>
           </div>
-
         </div>
 
         <div class="comment_title pt-3">
-          <h2>Add a review </h2>
-          <p>Your email address will not be published. Required fields are marked </p>
+          <h2>Add a review</h2>
+          <p>
+            Your email address will not be published. Required fields are marked
+          </p>
         </div>
         <div class="product_review_form">
           <form [formGroup]="formPostData" (ngSubmit)="handleSubmit()">
             <div class="row">
               <div class="col-12 mb-2">
                 <label for="review_comment">Your review </label>
-                <textarea formControlName="comment" rows="8" class="form-control rounded-0"
-                  id="review_comment"></textarea>
+                <textarea
+                  formControlName="comment"
+                  rows="8"
+                  class="form-control rounded-0"
+                  id="review_comment"
+                ></textarea>
               </div>
               <div class="col-lg-6 col-md-6">
                 <label for="author">Name</label>
-                <input id="author" formControlName="name" class="form-control rounded-0" type="text">
-
+                <input
+                  id="author"
+                  formControlName="name"
+                  class="form-control rounded-0"
+                  type="text"
+                />
               </div>
               <div class="col-lg-6 col-md-6">
                 <label for="email">Email </label>
-                <input id="email" formControlName="email" type="text" class="form-control rounded-0">
+                <input
+                  id="email"
+                  formControlName="email"
+                  type="text"
+                  class="form-control rounded-0"
+                />
               </div>
             </div>
             <button type="submit" class="btn-submittt py-2 px-3">Submit</button>
@@ -124,16 +181,22 @@
 
     <div class="related_prod mt-3">
       <div class="section_title">
-        <h2>Related Products </h2>
+        <h2>Related Products</h2>
       </div>
-      <div class="row ">
+      <div class="row">
         <div class="col-md-3" *ngFor="let item of products">
-          <div class="card text-center border-0 position-relative">
+          <div
+            class="card text-center border-0 position-relative"
+            routerLink="/productDetail/{{ item.id }}"
+          >
             <div class="show">
               <div class="hide-cus">
                 <div class="icon-heart position-absolute">
                   <a (click)="onFavorite(item.id)">
-                    <img src="https://mg-fashion.mgtechnologies.co.in/assets/images/heart-icon.svg" alt="">
+                    <img
+                      src="https://mg-fashion.mgtechnologies.co.in/assets/images/heart-icon.svg"
+                      alt=""
+                    />
                   </a>
                 </div>
                 <div class="btn-add position-absolute">
@@ -141,7 +204,11 @@
                 </div>
               </div>
               <a>
-                <img class="card-img-top img-product" src="{{item.image}}" alt="image">
+                <img
+                  class="card-img-top img-product"
+                  src="{{ item.image }}"
+                  alt="image"
+                />
               </a>
             </div>
             <div class="card-body">
@@ -152,10 +219,16 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
               </div>
-              <h5 class="card-title">{{item.name}}</h5>
-              <div class="box-price d-flex justify-content-center align-items-center">
-                <p class="card-price mr-2 font-weight-bold">{{item.price | currency:"USD":"symbol":"0.3"}}</p>
-                <p class="card-sale_price">{{item.sale_price | currency:"USD":"symbol":"0.3"}}</p>
+              <h5 class="card-title">{{ item.name }}</h5>
+              <div
+                class="box-price d-flex justify-content-center align-items-center"
+              >
+                <p class="card-price mr-2 font-weight-bold">
+                  {{ item.sale_price | currency : "USD" : "symbol" : "0.2" }}
+                </p>
+                <p class="card-sale_price">
+                  {{ item.price | currency : "USD" : "symbol" : "0.2" }}
+                </p>
               </div>
             </div>
           </div>
@@ -164,6 +237,5 @@
     </div>
   </div>
 </main>
-
 
 <app-footer></app-footer>

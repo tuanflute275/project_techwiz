@@ -415,6 +415,14 @@
       "sale_price": 12,
       "category_id": 1,
       "id": 1
+    },
+    {
+      "name": "Sleek Rubber Chicken",
+      "image": "https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg",
+      "price": 80,
+      "sale_price": 8,
+      "category_id": 1,
+      "id": 6
     }
   ]
 }

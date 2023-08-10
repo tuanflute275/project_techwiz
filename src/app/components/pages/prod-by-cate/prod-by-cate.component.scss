@@ -12,7 +12,7 @@ main {
       }
     }
     .title {
-      font-size: 35px;
+      font-size: 50px;
     }
   }
 
@@ -88,7 +88,7 @@ main {
 
   #search-box {
     background: #fff;
-    border-radius: 5px;
+    border-radius: 0px;
     border: 1px solid #ccc;
     padding: 10px 0;
     text-align: center;
@@ -194,4 +194,13 @@ main {
   .text-right {
     display: flex;
   }
+}
+.box-title {
+  background-color: #e9ecef;
+  height: 200px;
+}
+
+.box-title h3 {
+  margin-top: 40px;
+  font-family: "Lora", serif;
 }

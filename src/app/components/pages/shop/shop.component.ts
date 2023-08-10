@@ -15,6 +15,7 @@ export class ShopComponent implements OnInit {
   page: number = 1;
   products: any = [];
   carts: any = [];
+  categories: any = [];
   userFilter: any = { name: '' };
   productFormSearch: FormGroup = new FormGroup({
     name: new FormControl('')
@@ -60,9 +61,12 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProductAPI();
+    this.getListCategory();
   }
 
   darkMode = false;
+
+
 
   toggleTheme() {
     this.darkMode = !this.darkMode;
@@ -75,6 +79,13 @@ export class ShopComponent implements OnInit {
       this.products = response;
     });
 
+  }
+
+  getListCategory() {
+    this.app.getCategory().subscribe(res => {
+      console.log(res);
+      this.categories = res;
+    })
   }
 
   fetchProductAPI() {
