@@ -12,8 +12,47 @@ main {
       }
     }
     .title {
-      font-size: 35px;
+      font-size: 50px;
     }
   }
 
+}
+
+.box-title{
+  background-color:  #e9ecef;
+  height: 200px;
+}
+
+.box-title h3{
+  margin-top: 40px;
+  font-family: "Lora", serif;
+}
+h4{
+  padding-top: 25px;
+  font-family: "Lora", serif;
+}
+
+.about_thumb{
+  text-align: center;
+}
+
+.icon{
+  text-align: center ;
+}
+
+.about1{
+  text-align: center ;
+  // padding-left: 15px;
+}
+.about1 img{
+  width: 370px;
+}
+
+.about2{
+  width: 100%;
+  position: absolute;
+}
+
+.about3{
+  position: relative;
 }

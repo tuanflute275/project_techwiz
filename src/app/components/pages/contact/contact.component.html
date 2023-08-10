@@ -2,15 +2,59 @@
 
 <main>
   <div class="text-center box-title">
+    <h3 class="title">Contact Us</h3>
     <nav class="breadcrumb text-center d-flex justify-content-center">
       <a class="breadcrumb-item default" routerLink="/">Home</a>
       <span class="breadcrumb-item active">Contact</span>
     </nav>
-    <h3 class="title">Contact Us</h3>
     <div class="container">
     </div>
   </div>
 </main>
+<div class="address pt-3">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.6267803874694!2d105.78059437438769!3d21.047614387132406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab32dd484c53%3A0x4201b89c8bdfd968!2zMjM4IEhvw6BuZyBRdeG7kWMgVmnhu4d0LCBD4buVIE5odeG6vywgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1691584417443!5m2!1svi!2s" width="100%" height="400px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h3>Contact Us</h3>
+          <hr>
+          <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas human. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam</p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i>Address : No 40 Baria Sreet 133/2 NewYork City</p>
+          <hr>
+          <p>
+            <i class="fa-regular fa-envelope"></i>demo@example.com</p>
+          <hr>
+          <p><i class="fa fa-phone" aria-hidden="true"></i>0345687652</p>
+      </div>
+      <div class="col-md-6">
+          <h3>Tell Us Your Project</h3>
+          <form [formGroup]="ContactForm" (ngSubmit)="handleSubmit()">
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form4Example1">Your Name (required)</label>
+                <input type="text" id="form4Example1"  formControlName="name" class="form-control" placeholder="Name*"/>
+              </div>
+            
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form4Example2">Your Email (required)</label>
+                <input type="email" id="form4Example2"  formControlName="email" class="form-control" placeholder="Email*"/>
+              </div>
+            
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form4Example3">Your Message</label>
+                <textarea class="form-control" id="form4Example3" rows="8" placeholder="Message*"></textarea>
+              </div>
+            
+              <button type="submit" class="btn btn-dark mb-4">
+                Send
+              </button>
+            </form>
+          </div>
+  </div>
+  <hr>
+</div>
+
+
 
 
 <app-footer></app-footer>

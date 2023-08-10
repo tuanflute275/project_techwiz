@@ -12,7 +12,7 @@ main {
       }
     }
     .title {
-      font-size: 35px;
+      font-size: 50px;
     }
   }
 
@@ -195,4 +195,14 @@ main {
   .text-right {
     display: flex;
   }
+}
+
+.box-title{
+  background-color:  #e9ecef;
+  height: 200px;
+}
+
+.box-title h3{
+  margin-top: 40px;
+  font-family: "Lora", serif;
 }
