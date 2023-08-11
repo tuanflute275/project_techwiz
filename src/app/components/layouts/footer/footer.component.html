@@ -1,143 +1,87 @@
 <footer>
-  <div class="container">
-    <div class="row align-items-center justify-content-between">
-      <div class="col-md-6 newsletter_text">
-        <h3 class="text-uppercase">KEEP CONNECTED</h3>
-        <p>Get updates by subscribe our weekly newsletter</p>
-      </div>
-      <div class="col-md-6 newsletter_subscribe">
-        <form [formGroup]="formPostData" (ngSubmit)="handleSubmit()">
-          <i class="fa fa-envelope"></i>
-          <input
-            type="email"
-            formControlName="email"
-            placeholder="Enter your email address"
-          />
-          <button type="submit" [disabled]="!formPostData.valid">
-            Subscribe
-          </button>
-          <div class="line"></div>
-        </form>
-        <div
-          class="box-message mt-3"
-          *ngIf="
-            formPostData.controls.email.invalid &&
-            (formPostData.controls.email.touched ||
-              formPostData.controls.email.dirty)
-          "
-        >
-          <div *ngIf="formPostData.controls.email.errors">
-            <div
-              *ngIf="formPostData.controls.email.errors['required']"
-              style="color: red"
-            >
-              email is require!
+    <hr>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>OPENING TIME</h5>
+                        <ul>
+                            <li>Mon - Fri: 8AM - 10PM</li>
+                            <li>Sat: 9AM - 8PM</li>
+                            <li>Suns: 14PM - 18PM</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>INFORMATION</h5>
+                        <ul>
+                            <li>About Us</li>
+                            <li>Checkout</li>
+                            <li>Contact</li>
+                            <li>Frequently Question</li>
+                            <li>Wishlist</li>
+                        </ul>
+                    </div>
+                    <h6 class="py-4 ml-3">We Work All The Holidays</h6>
+                </div>
             </div>
-            <div
-              *ngIf="formPostData.controls.email.errors['email']"
-              style="color: red"
-            >
-              Incorrect Email Format
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="https://htmldemo.net/lukani/lukani/assets/img/logo/logo.png" alt="anh" width="150px">
+                </div>
+                <ul>
+                    <div class="row my-4">
+                        <li class="pr-5">Payment</li>
+                        <li class="pr-5">Affiliates</li>
+                        <li class="pr-5">Contact</li>
+                        <li>Internet</li>
+                    </div>
+                </ul>
+                <div class="icon my-4">
+                    <ul>
+                        <div class="row">
+                            <li><a href="#"><i class="fa-brands fa-facebook text-body"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-twitter text-body"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-google-plus-g text-body"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-youtube text-body"></i></a></li>
+                        </div>
+                    </ul>
+                </div>
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <img src="https://htmldemo.net/lukani/lukani/assets/img/icon/icon-app.jpg" alt="anh" width="100%">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://htmldemo.net/lukani/lukani/assets/img/icon/icon1-app.jpg" alt="anh" width="100%">
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>MY ACCOUNT</h5>
+                        <ul>
+                            <li>My Account</li>
+                            <li>Contact</li>
+                            <li>Shopping cart</li>
+                            <li>Checkout</li>
+                            <li>Shop</li>
+                            <li>Order History</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>CUSTORMER</h5>
+                        <ul>
+                            <li>Contact Us</li>
+                            <li>Terms of use</li>
+                            <li>Privacy Policy</li>
+                            <li>Site Map</li>
+                            <li>My Account</li>
+                            <li>Return</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="container mt-5">
-    <div class="row justify-content-between align-items-center">
-      <div class="col-md-5">
-        <div class="footer_widget_list">
-          <div class="footer_logo">
-            <a routerLink="/">
-              <img [src]="logo" alt="anh" style="object-fit: cover" />
-            </a>
-          </div>
-          <div class="footer_contact_list">
-            <span>Our Location</span>
-            <div style="margin-bottom: 10px"></div>
-            <a
-              ><i class="fa fa-location-arrow" aria-hidden="true"></i> 238 Hoang
-              Quoc Viet, Cau Giay, Ha Noi, Vietnam</a
-            >
-          </div>
-          <div class="footer_contact_list">
-            <span>24/7 hotline:</span>
-            <div style="margin-bottom: 10px"></div>
-            <a href="tel:0386564543">(+84)386564543</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-7">
-        <div class="footer_widget_list">
-          <div class="footer_menu">
-            <ul class="d-flex justify-content-end">
-              <li>
-                <a routerLink="/">Home</a>
-              </li>
-              <li>
-                <a routerLink="/shop">shop</a>
-              </li>
-              <li>
-                <a routerLink="/faq">faq</a>
-              </li>
-              <li>
-                <a routerLink="/blog">blog</a>
-              </li>
-              <li>
-                <a routerLink="/contact">contact</a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer_social">
-            <div class="social-buttons d-flex justify-content-end">
-              <a
-                href="https://www.facebook.com/BachkhoaAptech236HoangQuocViet"
-                target="_blank"
-                class="social-button social-button--facebook"
-                aria-label="Facebook"
-              >
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                class="social-button social-button--linkedin"
-                aria-label="LinkedIn"
-              >
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a
-                href="https://www.snapchat.com/"
-                target="_blank"
-                class="social-button social-button--snapchat"
-                aria-label="Snapchat"
-              >
-                <i class="fab fa-snapchat-ghost"></i>
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                class="social-button social-button--github"
-                aria-label="GitHub"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://codepen.io/"
-                target="_blank"
-                class="social-button social-button--codepen"
-                aria-label="CodePen"
-              >
-                <i class="fab fa-codepen"></i>
-              </a>
-            </div>
-          </div>
-          <div class="copyright_right d-flex justify-content-end mt-3">
-            <p>© Do not copy</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </footer>
