@@ -18,18 +18,18 @@
                       <label class="form-label" for="form3Example1c">Your Name</label>
                       <input type="text" formControlName="name" id="form3Example1c" class="form-control" />
                       <div class="box-message"
-                      *ngIf="signupForm.controls.name.invalid && (signupForm.controls.name.touched || signupForm.controls.name.dirty)">
-                      <div *ngIf="signupForm.controls.name.errors">
+                        *ngIf="signupForm.controls.name.invalid && (signupForm.controls.name.touched || signupForm.controls.name.dirty)">
+                        <div *ngIf="signupForm.controls.name.errors">
 
-                        <div *ngIf="signupForm.controls.name.errors['required']  " style="color: red;">
-                          Name is require!
-                        </div>
-                        <div *ngIf="signupForm.controls.name.errors['minlength'] " style="color: red;">
-                          Min length 5 chars
-                        </div>
+                          <div *ngIf="signupForm.controls.name.errors['required']  " style="color: red;">
+                            Name is require!
+                          </div>
+                          <div *ngIf="signupForm.controls.name.errors['minlength'] " style="color: red;">
+                            Min length 5 chars
+                          </div>
 
+                        </div>
                       </div>
-                    </div>
                     </div>
                   </div>
 
@@ -39,17 +39,17 @@
                       <label class="form-label" for="form3Example3c">Your Email</label>
                       <input type="email" formControlName="email" id="form3Example3c" class="form-control" />
                       <div class="box-message"
-                    *ngIf="signupForm.controls.email.invalid && (signupForm.controls.email.touched || signupForm.controls.email.dirty)">
-                    <div *ngIf="signupForm.controls.email.errors">
+                        *ngIf="signupForm.controls.email.invalid && (signupForm.controls.email.touched || signupForm.controls.email.dirty)">
+                        <div *ngIf="signupForm.controls.email.errors">
 
-                      <div *ngIf="signupForm.controls.email.errors['required']" style="color: red;">email is
-                        require!
+                          <div *ngIf="signupForm.controls.email.errors['required']" style="color: red;">email is
+                            require!
+                          </div>
+                          <div *ngIf="signupForm.controls.email.errors['email'] " style="color: red;">
+                            Incorrect Email Format
+                          </div>
+                        </div>
                       </div>
-                      <div *ngIf="signupForm.controls.email.errors['email'] " style="color: red;">
-                        Incorrect Email Format
-                      </div>
-                    </div>
-                  </div>
                     </div>
                   </div>
 
@@ -59,31 +59,33 @@
                       <label class="form-label" for="form3Example4c">Password</label>
                       <input type="password" formControlName="password" id="form3Example4c" class="form-control" />
                       <div class="box-message"
-                      *ngIf="signupForm.controls.password.invalid && (signupForm.controls.password.touched || signupForm.controls.password.dirty)">
-                      <div *ngIf="signupForm.controls.password.errors">
+                        *ngIf="signupForm.controls.password.invalid && (signupForm.controls.password.touched || signupForm.controls.password.dirty)">
+                        <div *ngIf="signupForm.controls.password.errors">
 
-                        <div *ngIf="signupForm.controls.password.errors['required']" style="color: red;">password is
-                          require!
-                        </div>
-                        <div *ngIf="signupForm.controls.password.errors['minlength'] " style="color: red;">
-                          Min length 6 chars
-                        </div>
+                          <div *ngIf="signupForm.controls.password.errors['required']" style="color: red;">password is
+                            require!
+                          </div>
+                          <div *ngIf="signupForm.controls.password.errors['minlength'] " style="color: red;">
+                            Min length 6 chars
+                          </div>
 
+                        </div>
                       </div>
-                    </div>
                     </div>
                   </div>
 
 
                   <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" formControlName="check" type="checkbox" value="" id="form2Example3c" style="margin-left: -19.5em; margin-top: 7px;" />
+                    <input class="form-check-input me-2" formControlName="check" type="checkbox" value=""
+                      id="form2Example3c" style="margin-left: -19.5em; margin-top: 7px;" />
                     <label class="form-check-label" for="form2Example3">
                       I agree all statements in <a href="#!">Terms of service</a>
                     </label>
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" class="btn btn-warning text-white btn-lg" [disabled]="!signupForm.valid">Register</button>
+                    <button type="submit" class="btn btn-warning text-white btn-lg"
+                      [disabled]="!signupForm.valid">Register</button>
                   </div>
 
                 </form>

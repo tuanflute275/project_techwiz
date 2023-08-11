@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import Swal from 'sweetalert2';
@@ -9,12 +10,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  heart: number = 1;
-  cart:number = 1;
-  categories: any = [];
-  logo = 'https://htmldemo.net/lukani/lukani/assets/img/logo/logo.png'
-  avatar = '../../../../assets/images/logo/avatar_admin.jpg'
   u_data: any;
+  cart:number = 1;
+  heart: number = 1;
+  categories: any = [];
+  userName: string = '';
+  logo = '../../../../assets/images/logo/logo.jpg'
+  avatar = '../../../../assets/images/logo/avatar_admin.jpg'
+  postFormSearch: FormGroup = new FormGroup({
+    name: new FormControl('')
+  });
 
   constructor(private router: Router, private app: AppService) {
 
@@ -24,6 +29,7 @@ export class HeaderComponent implements OnInit {
     this.getListCategory();
     this.u_data = this.getUData();
 
+    this.getAccountData(this.u_data?.id)
   }
 
   getListCategory() {
@@ -39,10 +45,19 @@ export class HeaderComponent implements OnInit {
     return data;
   }
 
-  search() {
+  getAccountData(id: any) {
+    this.app.getAccount(id).subscribe(response => {
+      this.userName = response[0].name;
+      console.log(this.userName)
+    });
   }
-  upload() {
+
+  submitSearch() {
+    let data = this.postFormSearch.value.name
+    console.log(data)
+    this.router.navigate([`/shop`]);
   }
+
   async logout() {
     const resullt = await Swal.fire({
       title: 'Do you want to log out ?',

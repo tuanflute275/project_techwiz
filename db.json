@@ -11,6 +11,12 @@
       "email": "tuanflute275@gmail.com",
       "password": "123456",
       "id": 2
+    },
+    {
+      "name": "nguyen van tuan",
+      "email": "tuan234@gmail.com",
+      "password": "111111",
+      "id": 3
     }
   ],
   "product": [
@@ -423,6 +429,20 @@
       "sale_price": 8,
       "category_id": 1,
       "id": 6
+    }
+  ],
+  "contacts": [
+    {
+      "name": "tuilatui",
+      "email": "tuilatui@gmail.com",
+      "message": "ahahaha",
+      "id": 1
+    }
+  ],
+  "emailUser": [
+    {
+      "email": "tuilatui@gmail.com",
+      "id": 1
     }
   ]
 }

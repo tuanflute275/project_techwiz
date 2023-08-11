@@ -1,13 +1,16 @@
-* {box-sizing: border-box;}
-
+* {
+  box-sizing: border-box;
+}
 
 //variable
 $main-color: #79a206;
 $white-color: #fff;
 $black-color: #222222;
+$black-color: #222;
+$grey-color: #ccc;
 $border-015: rgba(112, 112, 112, 0.15);
 $border-05: rgba(112, 112, 112, 0.5);
-$black-color: #222;
+$border-e8: #e8e8e8;
 
 //dark theme
 [data-theme="dark"] {
@@ -15,14 +18,10 @@ $black-color: #222;
   $white-color: #fff;
 }
 
-
-::selection{
+::selection {
   color: $white-color;
   background: $main-color;
 }
-
-
-
 
 //mixin
 @mixin button3($py, $px, $fz) {

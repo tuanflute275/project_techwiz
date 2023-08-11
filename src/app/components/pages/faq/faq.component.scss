@@ -1,9 +1,17 @@
-@import "../../../../styles.scss";
+@import '../../../../styles.scss';
+body {
+  font-family: "Poppins", sans-serif;
+}
 
 main {
   margin-top: 110px;
   .box-title {
     padding: 10px 0;
+    background-color: #e9ecef;
+    h3 {
+      margin-top: 40px;
+      font-family: "Lora", serif;
+    }
     .default {
       text-decoration: none;
       color: #999999;
@@ -12,46 +20,83 @@ main {
       }
     }
     .title {
-      font-size: 50px;
+      font-size: 35px;
     }
   }
-}
-
-.box-title {
-  background-color: #e9ecef;
-  height: 200px;
-}
-
-.box-title h3 {
-  margin-top: 40px;
-  font-family: "Lora", serif;
-}
-h4 {
-  padding-top: 25px;
-  font-family: "Lora", serif;
-}
-
-.about_thumb {
-  text-align: center;
-}
-
-.icon {
-  text-align: center;
-}
-
-.about1 {
-  text-align: center;
-  // padding-left: 15px;
-}
-.about1 img {
-  width: 370px;
-}
-
-.about2 {
-  width: 100%;
-  position: absolute;
-}
-
-.about3 {
-  position: relative;
+  .heading, .heading-2 {
+    margin-bottom: 60px;
+  }
+  .heading-2{
+    margin-top: 50px;
+  }
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    outline: none;
+  }
+  #accordion .panel {
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 25px;
+  }
+  #accordion .panel-heading {
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+  }
+  #accordion .panel-title a {
+    text-decoration: none;
+    display: block;
+    padding: 15px 15px;
+    background: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    color: $main-color;
+    border: 1px solid #ececec;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    transition: all 0.5s ease 0s;
+  }
+  #accordion .panel-title a.collapsed {
+    box-shadow: none;
+    color: #676767;
+  }
+  #accordion .panel-title a:before,
+  #accordion .panel-title a.collapsed:before {
+    content: "\f067";
+    font-family: "Font Awesome 5 Free";
+    width: 25px;
+    height: 25px;
+    line-height: 28px;
+    font-size: 15px;
+    font-weight: bold;
+    color: $main-color;
+    text-align: center;
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    transform: rotate(135deg);
+    transition: all 0.3s ease 0s;
+  }
+  #accordion .panel-title a.collapsed:before {
+    color: #676767;
+    transform: rotate(0);
+  }
+  #accordion .panel-title a:after {
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: #ececec;
+    position: absolute;
+    top: 0;
+    right: 55px;
+  }
+  #accordion .panel-body {
+    padding: 10px 15px 15px;
+    border: none;
+    font-size: 15px;
+    color: #615f5f;
+    line-height: 27px;
+  }
 }

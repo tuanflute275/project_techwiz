@@ -43,9 +43,6 @@
   background-color: green;
 }
 
-
-
-
 .show {
   &:hover .hide-cus {
     opacity: 1;
@@ -125,9 +122,17 @@
   font-weight: 500;
 }
 
+.btn-carousel{
+  border: none !important;
+  outline: none;
+}
+
 
 @media screen and (max-width: 768px) {
   .heading{
     font-size: 25px;
+  }
+  .verse{
+    padding: 0 !important;
   }
 }

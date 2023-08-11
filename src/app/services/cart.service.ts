@@ -38,7 +38,7 @@ export class HeartService {
   }
 
   getCartTotalPrice() {
-    let carts = this.getCarts()
+    let carts = this.getCarts()  
     let total: number = 0;
     carts.forEach((item: any) => {
       total += item.quantity * item.price

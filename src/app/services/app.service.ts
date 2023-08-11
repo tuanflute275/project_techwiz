@@ -32,10 +32,16 @@ export class AppService {
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
-  public getProduct() {
-    const url = `${this.API_PRODUCT}`;
-    return this.httpClient.get<any>(url, this.httpOptions);
+  //client post email
+  public postEmail(data: any) {
+    return this.httpClient.post<any>('http://localhost:3000/emailUser/', data,this.httpOptions);
   }
+
+  public postReviewFormContact(data: any) {
+    return this.httpClient.post<any>('http://localhost:3000/contacts/', data,this.httpOptions);
+  }
+
+
 
   // category
   public getCategory() {
@@ -49,6 +55,11 @@ export class AppService {
   }
 
   // product
+  public getProduct() {
+    const url = `${this.API_PRODUCT}`;
+    return this.httpClient.get<any>(url, this.httpOptions);
+  }
+
   public getProductById(id: number) {
     const url = `${this.API_PRODUCT}` + '?id=' + id;
     return this.httpClient.get<any>(url, this.httpOptions);
@@ -68,11 +79,11 @@ export class AppService {
     const url = `${this.API_PRODUCT}` + '?name_like=' + productName;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
-
-  public orderByProduct() {
-    const url = `${this.API_PRODUCT}` + '?_sort=views&_order=desc=';
+  public sort(name: string, type: string) {
+      const url = `${this.API_PRODUCT}` + `?_sort=${name}&_order=${type}`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
+
 
   public filterByPriceRange(min: any, max: any) {
     const url = `${this.API_PRODUCT}` + `?price_gte=${min}&price_lte=${max}`;

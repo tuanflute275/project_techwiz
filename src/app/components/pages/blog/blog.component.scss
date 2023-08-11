@@ -33,14 +33,12 @@ main {
 }
 
 .blog p{
-  line-height: 24px;
+  line-height: 30px;
   margin-bottom: 10px;
   font-size: 16px;
 }
 
 .blog2 {
-  // border-left: 5px solid #79a206;
-
   margin: 31px 0 31px 40px;
   font-style: italic;
   padding: 30px 45px;
@@ -91,5 +89,16 @@ ul {
         }
       }
     }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .blog2{
+    margin: 20px 0 !important;
+  }
+  .postBlog{
+    padding-left: 10px !important;
+    padding-top: 10px !important;
   }
 }

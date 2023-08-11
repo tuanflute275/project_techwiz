@@ -20,37 +20,10 @@ export class ShopComponent implements OnInit {
   productFormSearch: FormGroup = new FormGroup({
     name: new FormControl('')
   });
-  priceFormSearch: FormGroup = new FormGroup({
-    start: new FormControl(''),
-    end: new FormControl('')
-  });
 
   minPrice: number = 0;
   maxPrice: number = 0;
   filteredProducts: any = [];
-
-  // Slider Options
-  minValue: number = 0;
-  maxValue: number = 100;
-  options: Options = {
-    floor: 0,
-    ceil: 100,
-    translate: (value: number, label: LabelType): string => {
-      switch (label) {
-        case LabelType.Low:
-          this.minPrice = value;
-
-          return '<b>Min price:</b> Rs. ' + value;
-        case LabelType.High:
-          this.maxPrice = value;
-          return '<b>Max price:</b> Rs. ' + value;
-        default:
-          return 'Rs. ' + value;
-      }
-    }
-  };
-
-  // END Slider Options
 
 
   constructor(
@@ -64,9 +37,31 @@ export class ShopComponent implements OnInit {
     this.getListCategory();
   }
 
+
+    // Slider Options
+    minValue: number = 0;
+    maxValue: number = 100;
+    options: Options = {
+      floor: 0,
+      ceil: 100,
+      translate: (value: number, label: LabelType): string => {
+        switch (label) {
+          case LabelType.Low:
+            this.minPrice = value;
+
+            return '<b>Min price:</b> Rs. ' + value;
+          case LabelType.High:
+            this.maxPrice = value;
+            return '<b>Max price:</b> Rs. ' + value;
+          default:
+            return 'Rs. ' + value;
+        }
+      },
+    };
+
+    // END Slider Options
+
   darkMode = false;
-
-
 
   toggleTheme() {
     this.darkMode = !this.darkMode;
@@ -101,14 +96,17 @@ export class ShopComponent implements OnInit {
     })
   }
 
-  searchByMoney() {
-    let start = this.priceFormSearch.value.start;
-    let end = this.priceFormSearch.value.end;
+  sortByAZ(){
+    this.app.sort('name','asc').subscribe(response=>{
+      console.log(response)
+      this.products = response;
+    })
+  }
 
-    console.log(this.products)
-
+  sortByZA(){
 
   }
+
 
   onFavorite(product: number) {
     console.log(product)

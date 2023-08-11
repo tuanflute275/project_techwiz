@@ -4,6 +4,11 @@ main {
   margin-top: 110px;
   .box-title {
     padding: 10px 0;
+    background-color: #e9ecef;
+    h3 {
+      margin-top: 40px;
+      font-family: "Lora", serif;
+    }
     .default {
       text-decoration: none;
       color: #999999;
@@ -15,43 +20,38 @@ main {
       font-size: 50px;
     }
   }
+  h4 {
+    padding-top: 25px;
+    font-family: "Lora", serif;
+  }
+  .about_thumb {
+    text-align: center;
+  }
+
+  .icon {
+    text-align: center;
+  }
+
+  .banner-about {
+    .content-about {
+      top: 10px;
+      top: 24%;
+      transform: translateX(-12%);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .banner-about {
+      .banner{
+        height: 700px;
+        object-fit: cover;
+      }
+      .content-about {
+        top: 5%;
+        transform: translateX(-2%);
+      }
+    }
+  }
 }
 
-.box-title {
-  background-color: #e9ecef;
-  height: 200px;
-}
 
-.box-title h3 {
-  margin-top: 40px;
-  font-family: "Lora", serif;
-}
-h4 {
-  padding-top: 25px;
-  font-family: "Lora", serif;
-}
-
-.about_thumb {
-  text-align: center;
-}
-
-.icon {
-  text-align: center;
-}
-
-.about1 {
-  text-align: center;
-  // padding-left: 15px;
-}
-.about1 img {
-  width: 370px;
-}
-
-.about2 {
-  width: 100%;
-  position: absolute;
-}
-
-.about3 {
-  position: relative;
-}

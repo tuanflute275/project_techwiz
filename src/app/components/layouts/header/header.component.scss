@@ -9,6 +9,10 @@ header {
   z-index: 9999;
   background: rgba($color: #fff, $alpha: 0.9);
 }
+button{
+  border: none;
+  outline:none;
+}
 .menu {
   font-family: "Open Sans Condensed", sans-serif;
   li {
@@ -53,9 +57,14 @@ header {
         font-size: 20px;
         text-decoration: none;
         padding: 4px 10px;
+        cursor: pointer;
         i {
           color: #333;
           font-size: 25px;
+          transition: all .3s;
+          &:hover {
+            color: $main-color;
+          }
         }
       }
     }
@@ -77,13 +86,13 @@ header {
     line-height: 18px;
   }
 }
-.btn-avatar{
+.btn-avatar {
   border: none;
   outline: none;
-  &:focus{
-border: none;
-outline: none;
-box-shadow: 0 0 0 #fff;
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0 0 0 #fff;
   }
 }
 
@@ -97,12 +106,38 @@ box-shadow: 0 0 0 #fff;
   left: -42px !important;
   top: 78px !important;
 }
-.btn-logout{
+.btn-logout {
   cursor: pointer !important;
 }
-.dropdown-menu-custom{
+.dropdown-menu-custom {
   border: none !important;
 }
-.dropdown-item-custom:hover{
+.dropdown-item-custom:hover {
   background-color: transparent !important;
+}
+
+.modal{
+  .modal-content{
+    margin-top: 102px;
+    .modal-body{
+      input{
+        border:none;
+        outline: none;
+        border: 1px solid #ccc;
+        margin-right: 5px;
+        &:hover{
+          border: 1px solid $main-color;
+        }
+        &:focus{
+          box-shadow: 0 0 0 #fff;
+        }
+      }
+      span{
+        transition: .3s;
+        &:hover{
+          color: $main-color;
+        }
+      }
+    }
+  }
 }

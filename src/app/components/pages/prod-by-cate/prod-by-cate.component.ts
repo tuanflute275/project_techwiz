@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 export class ProdByCateComponent implements OnInit {
   id: any;
   page: number = 1;
+  pageSize: number = 9;
+  results: number = 1;
   products: any = [];
   carts: any = [];
   userFilter: any = { name: '' };
@@ -21,10 +23,6 @@ export class ProdByCateComponent implements OnInit {
   categories: any = [];
   productFormSearch: FormGroup = new FormGroup({
     name: new FormControl(''),
-  });
-  priceFormSearch: FormGroup = new FormGroup({
-    start: new FormControl(''),
-    end: new FormControl(''),
   });
 
   minPrice: number = 0;
@@ -66,7 +64,6 @@ export class ProdByCateComponent implements OnInit {
       // Lấy giá trị của tham số 'id' từ URL
       this.id = params.get('id') as string;
 
-      // Thực hiện các hành động cần thiết dựa trên ID mới
       this.fetchProductAPI(+this.id);
       this.fetchCategoryAPI(+this.id);
     });
@@ -83,6 +80,10 @@ export class ProdByCateComponent implements OnInit {
       'data-theme',
       this.darkMode ? 'dark' : 'light'
     );
+  }
+
+  reset(){
+    this.fetchProductAPI(this.id)
   }
 
   filterProductsByPrice() {
@@ -109,6 +110,7 @@ export class ProdByCateComponent implements OnInit {
   fetchProductAPI(cateID: any) {
     this.app.getProductByCategory(cateID).subscribe(async (response) => {
       this.products = await response;
+      this.results = await response.length;
       return await response;
     });
   }
@@ -120,12 +122,18 @@ export class ProdByCateComponent implements OnInit {
     });
   }
 
-  searchByMoney() {
-    let start = this.priceFormSearch.value.start;
-    let end = this.priceFormSearch.value.end;
-
-    console.log(this.products);
+  sortBy(name: string, type: string){
+    this.app.sort(name, type).subscribe(response=>{
+      console.log(response)
+      this.products = response;
+    });
   }
+
+  handlePerPage(perPage: number){
+    console.log(perPage)
+    this.pageSize = perPage
+  }
+
 
   onFavorite(product: number) {
     console.log(product);

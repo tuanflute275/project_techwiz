@@ -1,79 +1,40 @@
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-light px-4 py-2 d-flex align-items-center"
-  >
+  <nav class="navbar navbar-expand-sm navbar-light px-4 py-2 d-flex align-items-center">
     <a class="navbar-brand" routerLink="/">
-      <img [src]="logo" alt="anh" width="150px">
+      <img [src]="logo" alt="">
     </a>
-    <button
-      class="navbar-toggler d-lg-none"
-      type="button"
-      data-toggle="collapse"
-      data-target="#collapsibleNavId"
-      aria-controls="collapsibleNavId"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav m-auto mt-2 py-4 mt-lg-0 menu">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/"
-            >Home <span class="sr-only">(current)</span></a
-          >
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link text-dark dropdown-toggle"
-            href="#"
-            role="button"
-            data-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Categories
-          </a>
-          <div class="dropdown-menu dropdown-menu-custom">
-            <a
-              *ngFor="let item of categories"
-              routerLink="/category/{{ item.id }}"
-              class="dropdown-item nav-link text-dark dropdown-item-custom"
-              href="#"
-              >{{ item.name }}</a
-            >
-          </div>
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/shop"
-            >Shop <span class="sr-only">(current)</span></a
-          >
+          <a class="nav-link" routerLink="/shop">Shop <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/faq"
-            >Faq <span class="sr-only">(current)</span></a
-          >
+          <a class="nav-link" routerLink="/faq">Faq <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/about"
-            >About <span class="sr-only">(current)</span></a
-          >
+          <a class="nav-link" routerLink="/about">About <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/blog"
-            >Blog <span class="sr-only">(current)</span></a
-          >
+          <a class="nav-link" routerLink="/blog">Blog <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/contact"
-            >Contact <span class="sr-only">(current)</span></a
-          >
+          <a class="nav-link" routerLink="/contact">Contact <span class="sr-only">(current)</span></a>
         </li>
       </ul>
+
+      <p *ngIf="u_data">Hello, <b class="text-capitalize">{{ userName }}</b> </p>
 
       <div class="header_account">
         <ul class="d-flex align-items-center">
           <li class="header_search">
-            <a (click)="search()">
+            <a data-toggle="modal" data-target="#staticBackdrop">
               <i class="fa-solid fa-magnifying-glass"></i>
             </a>
           </li>
@@ -92,24 +53,12 @@
           </li>
           <li *ngIf="u_data">
             <div class="dropdown">
-              <a
-                class="btn dropdown-toggle btn-avatar"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  [src]="avatar"
-                  class="avatar"
-                  style="position: relative; border-radius: 50%"
-                  alt=""
-                />
+              <a class="btn dropdown-toggle btn-avatar" href="#" role="button" data-toggle="dropdown"
+                aria-expanded="false">
+                <img [src]="avatar" class="avatar" style="position: relative; border-radius: 50%" alt="" />
               </a>
               <div class="dropdown-menu show-avatar text-dark">
-                <a class="dropdown-item btn-logout" (click)="logout()"
-                  >Logout</a
-                >
+                <a class="dropdown-item btn-logout" (click)="logout()">Logout</a>
               </div>
             </div>
           </li>
@@ -123,4 +72,30 @@
       </div>
     </div>
   </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="postFormSearch" (ngSubmit)="submitSearch()">
+          <div class="input-group rounded">
+              <input type="search" formControlName="name" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+              <button type="submit" class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

@@ -1,16 +1,198 @@
 <app-header></app-header>
 
-
 <main>
   <div class="text-center box-title">
-    <h3 class="title">Shop</h3>
+    <h3 class="title">shop</h3>
     <nav class="breadcrumb text-center d-flex justify-content-center">
       <a class="breadcrumb-item default" routerLink="/">Home</a>
-      <span class="breadcrumb-item active">Shop</span>
+      <span class="breadcrumb-item active">shop</span>
     </nav>
     <div class="container"></div>
   </div>
-  <div class="container mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <form
+          [formGroup]="productFormSearch"
+          (ngSubmit)="submitSearch()"
+          action=""
+        >
+          <div id="search-box">
+            <input
+              type="text"
+              id="search-box__input"
+              formControlName="name"
+              [(ngModel)]="userFilter.name"
+              placeholder="Search.."
+            />
+            <button type="submit" id="search-box__btn">
+              <i class="cil-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <div class="women mt-3">
+          <b>CATEGORIES</b>
+          <hr />
+          <ul>
+            <li *ngFor="let item of categories">
+              <a routerLink="/category/{{ item.id }}">{{ item.name }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="price pt-3">
+          <b>FILTER BY PRICE</b>
+          <hr />
+
+          <ng5-slider
+            [(value)]="minValue"
+            [(highValue)]="maxValue"
+            [options]="options"
+          ></ng5-slider>
+          <button
+            class="btn btn-primary mt-3 rounded-0 btn-block btn-sm"
+            (click)="filterProductsByPrice()"
+          >
+            Filter Now
+          </button>
+        </div>
+
+        <div class="manufacturer pt-3">
+          <b>MANUFACTURER</b>
+          <hr />
+          <ul>
+            <li><a href="">Brake Parts</a></li>
+            <li><a href="">Accessories</a></li>
+            <li><a href="">Engie Parts</a></li>
+            <li><a href="">Hermes</a></li>
+            <li><a href="">Louis Vuittion</a></li>
+          </ul>
+        </div>
+
+        <div class="compare pt-5">
+          <b>COMPARE</b>
+          <hr />
+          <div class="row">
+            <div class="col-md-5">
+              <img
+                src="https://htmldemo.net/lukani/lukani/assets/img/product/product2.jpg"
+                alt=""
+                width="80px"
+                height="80px"
+              />
+            </div>
+
+            <div class="col-md-7">
+              <p>Donec Non Est</p>
+              <p class="sale_price">$80.00 <del>$20.00</del></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <img
+                src="https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg"
+                alt=""
+                width="80px"
+                height="80px"
+              />
+            </div>
+
+            <div class="col-md-7">
+              <p>Donec Non Est</p>
+              <p class="sale_price">$80.00 <del>$20.00</del></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+                sort:
+              </button>
+          <div class="dropdown-menu" aria-labelledby="triggerId">
+            <a (click)="sortByAZ()" class="dropdown-item">sort a-z</a>
+            <a (click)="sortByZA()" class="dropdown-item">sort z-a</a>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-md-4"
+            *ngFor="
+              let item of products | filterBy: userFilter
+                | paginate : { itemsPerPage: 9, currentPage: page }
+            "
+          >
+            <div class="card text-center border-0 position-relative">
+              <div class="show">
+                <div class="hide-cus">
+                  <div class="icon-heart position-absolute">
+                    <a (click)="onFavorite(item)">
+                      <img
+                        src="https://mg-fashion.mgtechnologies.co.in/assets/images/heart-icon.svg"
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                  <div class="btn-add position-absolute">
+                    <a (click)="onAddToCart(item)">Add To Bag</a>
+                  </div>
+                </div>
+                <a (click)="getDetailProduct(item.id)">
+                  <img
+                    class="card-img-top img-product"
+                    src="{{ item.image }}"
+                    alt="image"
+                  />
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="text-warning star">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <h5 class="card-title">{{ item.name }}</h5>
+                <div
+                  class="box-price d-flex justify-content-center align-items-center"
+                >
+                  <p class="card-price mr-2 font-weight-bold">
+                    {{ item.price | currency : "USD" : "symbol" : "0.2" }}
+                  </p>
+                  <p class="card-sale_price">
+                    {{ item.sale_price | currency : "USD" : "symbol" : "0.2" }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center ml-5" *ngIf="(products | filterBy: userFilter).length === 0">No matching elements</p>
+        <pagination-controls
+          class="text-center mt-3"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>
+<app-header></app-header>
+
+<main>
+  <div class="text-center box-title">
+    <h3 class="title">shop</h3>
+    <nav class="breadcrumb text-center d-flex justify-content-center">
+      <a class="breadcrumb-item default" routerLink="/">Home</a>
+      <span class="breadcrumb-item active">shop</span>
+    </nav>
+    <div class="container"></div>
+  </div>
+  <div class="container">
     <div class="row">
       <div class="col-md-3">
         <form
@@ -106,10 +288,7 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div  *ngIf="products.length <= 0" class="text-center">
-          <p >Nothing To Show Up</p>
-        </div>
-        <div class="row" *ngIf="products.length > 0">
+        <div class="row">
           <div
             class="col-md-4"
             *ngFor="
@@ -168,7 +347,6 @@
           (pageChange)="page = $event"
         ></pagination-controls>
       </div>
-
     </div>
   </div>
 </main>

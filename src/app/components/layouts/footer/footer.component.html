@@ -6,12 +6,35 @@
         <p>Get updates by subscribe our weekly newsletter</p>
       </div>
       <div class="col-md-6 newsletter_subscribe">
-        <form action="#">
+        <form [formGroup]="formPostData" (ngSubmit)="handleSubmit()">
           <i class="fa fa-envelope"></i>
-          <input type="email" placeholder="Enter your email address" />
-          <button type="submit">Subscribe</button>
+          <input type="email" formControlName="email" placeholder="Enter your email address" />
+          <button type="submit" [disabled]="!formPostData.valid">Subscribe</button>
           <div class="line"></div>
         </form>
+        <div
+        class="box-message mt-3"
+        *ngIf="
+          formPostData.controls.email.invalid &&
+          (formPostData.controls.email.touched ||
+            formPostData.controls.email.dirty)
+        "
+      >
+        <div *ngIf="formPostData.controls.email.errors">
+          <div
+            *ngIf="formPostData.controls.email.errors['required']"
+            style="color: red"
+          >
+            email is require!
+          </div>
+          <div
+            *ngIf="formPostData.controls.email.errors['email']"
+            style="color: red"
+          >
+            Incorrect Email Format
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -21,7 +44,7 @@
         <div class="footer_widget_list">
           <div class="footer_logo">
             <a routerLink="/">
-              <img [src]="logo" alt="anh" width="150px">
+              <img [src]="logo" alt="anh" style="object-fit: cover;">
             </a>
           </div>
           <div class="footer_contact_list">
