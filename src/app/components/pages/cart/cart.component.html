@@ -2,19 +2,22 @@
 
 <main>
   <div class="text-center box-title">
+    <h3 class="title">Carts</h3>
     <nav class="breadcrumb text-center d-flex justify-content-center">
-      <a class="breadcrumb-item default" routerLink="/home">Home</a>
-      <span class="breadcrumb-item active">Your Bag</span>
+      <a class="breadcrumb-item default" routerLink="/">Home</a>
+      <span class="breadcrumb-item active">Carts</span>
     </nav>
-    <h3 class="title">INSIDE YOUR BAG</h3>
     <div class="container"></div>
   </div>
-  <div class="container">
+  <div class="container mt-3">
     <div class="row">
       <div class="col-md-8 col-sm-12">
         <div class="cart-product-list">
-          <div class="cart-product-list-heading my-4">Wishlist</div>
+          <div class="cart-product-list-heading my-4">Carts</div>
           <div class="cart-product-list-main">
+            <div *ngIf="carts.length <= 0">
+              <p>Nothing To Show</p>
+            </div>
             <div
               class="cart-product-list-grid d-flex align-items-center"
               *ngFor="let item of carts; let i = index"
@@ -24,7 +27,9 @@
               </div>
               <div class="cart-product-list-details">
                 <div class="cart-product-tittle">
-                  <a routerLink="/home/productDetail">{{ item.name }}</a>
+                  <a routerLink="/productDetail/{{ item.id }}">{{
+                    item.name
+                  }}</a>
                 </div>
                 <div class="cart-product-price">
                   {{ item.price | currency : "USD" : "symbol" : "0.0" }}

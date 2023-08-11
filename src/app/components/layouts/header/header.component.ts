@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   categories: any = [];
   userName: string = '';
   logo = '../../../../assets/images/logo/logo.jpg'
-  avatar = '../../../../assets/images/logo/avatar_admin.jpg'
+  avatar = '../../../../assets/images/user_default.jpg'
   postFormSearch: FormGroup = new FormGroup({
     name: new FormControl('')
   });

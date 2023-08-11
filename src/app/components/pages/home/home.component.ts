@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   page: number = 1;
   products: any = [];
   carts: any = [];
+  favs: any = [];
   p: number = 1;
   userName: string = '';
   userFilter: any = { name: '' };
@@ -55,26 +56,36 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onFavorite(product: number) {
-    console.log(product)
-    Swal.fire(
-      '',
-      'Add to heart successfully !',
-      'success'
-    )
-    this.heartService.postHeart(product).subscribe(response => {
-      this.heartService.getHeart().subscribe(data => {
-        console.log(data)
-      })
-    })
+  onFavorite(product: any) {
+    this.favs = localStorage.getItem('heart') ? JSON.parse(localStorage.getItem('heart') as any) : [];
+    let idx = this.favs.findIndex((item: any) => item.id === product.id);
+    console.log(product);
+    if (idx >= 0) {
+      this.favs.splice(idx, 1);
+      localStorage.setItem('heart', JSON.stringify(this.favs));
+      Swal.fire('', 'Remove From favourite successfully !', 'success');
+    } else {
+      let heartItem: any = {
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        price: product.sale_price ? product.sale_price : product.price
+      };
+      Swal.fire('', 'Add to favourite successfully !', 'success');
+      this.favs.push(heartItem);
+      //save storage
+      localStorage.setItem('heart', JSON.stringify(this.favs));
+    }
   }
   onAddToCart(product: any) {
-    let idx = this.carts.findIndex((item: any) => item.id === product.id)
-    console.log(product)
+    this.carts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') as any) : [];
+    let idx = this.carts.findIndex((item: any) => item.id === product.id);
+    console.log(product);
     if (idx >= 0) {
       this.carts[idx].quantity += 1;
+      this.app.saveCart(this.carts);
+      Swal.fire('', 'Add to cart successfully !', 'success');
     } else {
-
       let cartItem: any = {
         id: product.id,
         name: product.name,
@@ -82,21 +93,18 @@ export class HomeComponent implements OnInit {
         price: product.sale_price ? product.sale_price : product.price,
         quantity: 1,
         subtotal: function () {
-          return this.price * this.quantity
-        }
-      }
-      Swal.fire(
-        '',
-        'Add to cart successfully !',
-        'success'
-      )
-      this.carts.push(cartItem)
+          return this.price * this.quantity;
+        },
+      };
+      Swal.fire('', 'Add to cart successfully !', 'success');
+      this.carts.push(cartItem);
+          //save storage
+    this.app.saveCart(this.carts);
     }
-    //save storage
-    this.app.saveCart(this.carts)
-    console.log(this.carts);
 
+    console.log(this.carts);
   }
+
 
   getDetailProduct(id: number) {
     console.log(id);

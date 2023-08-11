@@ -2,7 +2,7 @@
 
 <main>
   <div class="text-center box-title">
-    <h3 class="title">Category: {{ category.name }}</h3>
+    <h3 class="title">{{ category.name }}</h3>
     <nav class="breadcrumb text-center d-flex justify-content-center">
       <a class="breadcrumb-item default" routerLink="/">Home</a>
       <span class="breadcrumb-item active">{{ category.name }}</span>
@@ -47,7 +47,7 @@
         </div>
 
 
-        <div class="compare pt-5">
+        <div class="compare pt-5 pageSizee">
           <b>COMPARE</b>
           <hr />
           <div class="row">
@@ -109,7 +109,7 @@
                 </div>
               </div>
             </div>
-            <p class="p-0 m-0">Showing {{ page }}–{{ pageSize }} of {{ results }} results</p>
+            <p class="p-0 m-0 pageSizee">Showing {{ page }}–{{ pageSize }} of {{ results }} results</p>
           </div>
         </div>
         <div class="row">
@@ -141,7 +141,7 @@
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
-                <h5 class="card-title">{{ item.name }}</h5>
+                <h5 class="card-title text-truncate">{{ item.name }}</h5>
                 <div class="box-price d-flex justify-content-center align-items-center">
                   <p class="card-price mr-2 font-weight-bold">
                     {{ item.price | currency : "USD" : "symbol" : "0.2" }}

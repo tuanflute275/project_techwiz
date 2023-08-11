@@ -117,8 +117,7 @@ export class AppService {
   }
 
   saveCart(carts: any) {
-    let cartJson = JSON.stringify(carts);
-    localStorage.setItem('cart', cartJson);
+    localStorage.setItem('cart', JSON.stringify(carts));
   }
 
   getCartTotalPrice() {

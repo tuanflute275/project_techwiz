@@ -18,8 +18,7 @@ export class HeartService {
 
 
   public getHeart() {
-    const url = `${this.API_HEART}`
-    return this.httpClient.get<any>(url, this.httpOptions);
+    return localStorage.getItem('heart') ? JSON.parse(localStorage.getItem('heart') as any) : [];
   }
 
   public postHeart(data: any) {

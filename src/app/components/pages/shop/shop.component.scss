@@ -6,7 +6,7 @@ main {
     padding: 10px 0;
     background-color: #e9ecef;
     h3 {
-      margin-top: 40px;
+      margin-top: 30px;
       font-family: "Lora", serif;
     }
     .default {
@@ -232,5 +232,23 @@ main {
     &:hover {
       background: $main-color;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form button i {
+    padding-left: 120px;
+  }
+  .shop1 {
+    display: flex;
+  }
+  .shop1 img {
+    margin-top: 40px;
+  }
+  #search-box__input {
+    width: 90% !important;
+  }
+  .pageSizee{
+    display: none !important;
   }
 }

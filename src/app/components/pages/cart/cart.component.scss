@@ -1,9 +1,14 @@
-@import '../../../../styles.scss';
+@import "../../../../styles.scss";
 
 main {
   margin-top: 110px;
   .box-title {
-    padding: 80px 0;
+    padding: 10px 0;
+    background-color: #e9ecef;
+    h3 {
+      margin-top: 40px;
+      font-family: "Lora", serif;
+    }
     .default {
       text-decoration: none;
       color: #999999;
@@ -12,7 +17,7 @@ main {
       }
     }
     .title {
-      font-size: 35px;
+      font-size: 50px;
     }
   }
   //wishlist
@@ -112,7 +117,7 @@ main {
     }
   }
   @media screen and (max-width: 768px) {
-    .cart-promo-code{
+    .cart-promo-code {
       margin-top: 40px;
     }
   }

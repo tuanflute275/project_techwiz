@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./heart.component.scss']
 })
 export class HeartComponent implements OnInit{
-  avatar = '../../../../assets/images/logo/avatar_admin.jpg'
+  avatar = '../../../../assets/images/user_default.jpg'
   favorites: any = [];
 
   constructor(
@@ -23,10 +23,7 @@ export class HeartComponent implements OnInit{
   }
 
   getAllHeart(){
-    this.heartService.getHeart().subscribe(response=>{
-      this.favorites = response;
-      console.log('lenght ',response.length)
-    })
+    this.favorites = this.heartService.getHeart();
   }
 
   removeFavorite(id: number) {

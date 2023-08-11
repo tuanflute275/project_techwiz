@@ -4,7 +4,7 @@
   <div class="container">
     <div class="profile-user-details text-center">
       <div class="user-image">
-        <img [src]="avatar" alt="">
+        <img [src]="avatar" alt="" />
       </div>
       <div class="profile-user-name">
         <h3>Tuấn Flute</h3>
@@ -27,21 +27,32 @@
     <div class="cart-product-list">
       <div class="cart-product-list-heading my-4">Wishlist</div>
       <div class="cart-product-list-main">
-        <div class="cart-product-list-grid d-flex align-items-center" *ngFor="let item of favorites">
+        <div *ngIf="favorites.length <= 0">
+          <p>Nothing To Show</p>
+        </div>
+        <div
+          class="cart-product-list-grid d-flex align-items-center"
+          *ngFor="let item of favorites"
+        >
           <div class="cart-product-list-image">
             <a (click)="getDetailProduct(item.id)">
-              <img class="card-img-top img-product" src="{{item.image}}" alt="image">
+              <img
+                class="card-img-top img-product"
+                src="{{ item.image }}"
+                alt="image"
+              />
             </a>
           </div>
           <div class="cart-product-list-details">
             <div class="cart-product-tittle">
-              <a routerLink="/home/productDetail">{{item.name}}</a>
+              <a routerLink="/home/productDetail">{{ item.name }}</a>
             </div>
             <div class="cart-product-price">
-              <p class="card-text">{{item.price | currency:"USD":"symbol":"0.0"}}</p>
+              <p class="card-text">
+                {{ item.price | currency : "USD" : "symbol" : "0.0" }}
+              </p>
             </div>
-            <div class="cart-quantity-size mt-3">
-            </div>
+            <div class="cart-quantity-size mt-3"></div>
             <div class="cart-stock-text">Instock</div>
           </div>
           <div class="cart-product-remove-btn">
@@ -54,6 +65,5 @@
     </div>
   </div>
 </main>
-
 
 <app-footer></app-footer>

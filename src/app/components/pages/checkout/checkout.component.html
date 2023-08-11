@@ -2,95 +2,314 @@
 
 <main>
   <div class="text-center box-title">
+    <h3 class="title">Check Out</h3>
     <nav class="breadcrumb text-center d-flex justify-content-center">
-      <a class="breadcrumb-item default" routerLink="/home">Home</a>
-      <span class="breadcrumb-item active">checkout</span>
+      <a class="breadcrumb-item default" routerLink="/">Home</a>
+      <span class="breadcrumb-item active">Check Out</span>
     </nav>
-    <h3 class="title">CHECKOUT</h3>
-    <div class="container">
-    </div>
+    <div class="container"></div>
   </div>
+
   <div class="container">
     <div class="row">
-      <div class="col-7 px-5">
-        <form>
+      <div class="col-md-7 col-sm-12 px-5">
+        <form [formGroup]="checkOutForm" (ngSubmit)="handleSubmit()">
           <div class="checkout-form-heading">Contact Information:</div>
           <div class="form-group">
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress"
+              placeholder="1234 Main St"
+            />
           </div>
           <div class="checkout-form-heading">Billing Address:</div>
           <!--  -->
           <div class="form-row">
             <div class="form-group col-md-6">
-              <input type="firstName" class="form-control" placeholder="firstName">
+              <input
+                type="firstName"
+                class="form-control"
+                placeholder="firstName"
+                formControlName="firstName"
+              />
+              <div
+                class="box-message"
+                *ngIf="
+                  checkOutForm.controls.firstName.invalid &&
+                  (checkOutForm.controls.firstName.touched ||
+                    checkOutForm.controls.firstName.dirty)
+                "
+              >
+                <div *ngIf="checkOutForm.controls.firstName.errors">
+                  <div
+                    *ngIf="checkOutForm.controls.firstName.errors['required']"
+                    style="color: red"
+                  >
+                    firstName is require!
+                  </div>
+                  <div
+                    *ngIf="checkOutForm.controls.firstName.errors['minlength']"
+                    style="color: red"
+                  >
+                    Min length 5 chars
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-6">
-              <input type="lastName" class="form-control" placeholder="lastName">
+              <input
+                type="lastName"
+                class="form-control"
+                placeholder="lastName"
+                formControlName="lastName"
+              />
+              <div
+                class="box-message"
+                *ngIf="
+                  checkOutForm.controls.lastName.invalid &&
+                  (checkOutForm.controls.lastName.touched ||
+                    checkOutForm.controls.lastName.dirty)
+                "
+              >
+                <div *ngIf="checkOutForm.controls.lastName.errors">
+                  <div
+                    *ngIf="checkOutForm.controls.lastName.errors['required']"
+                    style="color: red"
+                  >
+                    lastName is require!
+                  </div>
+                  <div
+                    *ngIf="checkOutForm.controls.lastName.errors['minlength']"
+                    style="color: red"
+                  >
+                    Min length 5 chars
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="Company" placeholder="Company (Optional)">
+            <input
+              type="text"
+              class="form-control"
+              id="Company"
+              placeholder="Company (Optional)"
+              formControlName="company"
+            />
+            <div
+              class="box-message"
+              *ngIf="
+                checkOutForm.controls.company.invalid &&
+                (checkOutForm.controls.company.touched ||
+                  checkOutForm.controls.company.dirty)
+              "
+            >
+              <div *ngIf="checkOutForm.controls.company.errors">
+                <div
+                  *ngIf="checkOutForm.controls.company.errors['required']"
+                  style="color: red"
+                >
+                  company is require!
+                </div>
+                <div
+                  *ngIf="checkOutForm.controls.company.errors['minlength']"
+                  style="color: red"
+                >
+                  Min length 5 chars
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <input type="text" class="form-control" id="inputCity" placeholder="city name">
+              <input
+                type="text"
+                class="form-control"
+                id="inputCity"
+                placeholder="city name"
+                formControlName="inputCity"
+              />
+              <div
+                class="box-message"
+                *ngIf="
+                  checkOutForm.controls.inputCity.invalid &&
+                  (checkOutForm.controls.inputCity.touched ||
+                    checkOutForm.controls.inputCity.dirty)
+                "
+              >
+                <div *ngIf="checkOutForm.controls.inputCity.errors">
+                  <div
+                    *ngIf="checkOutForm.controls.inputCity.errors['required']"
+                    style="color: red"
+                  >
+                    inputCity is require!
+                  </div>
+                  <div
+                    *ngIf="checkOutForm.controls.inputCity.errors['minlength']"
+                    style="color: red"
+                  >
+                    Min length 5 chars
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-4">
-              <input type="text" class="form-control" id="state" placeholder="State">
+              <input
+                type="text"
+                class="form-control"
+                id="state"
+                placeholder="State"
+                formControlName="state"
+              />
+              <div
+                class="box-message"
+                *ngIf="
+                  checkOutForm.controls.state.invalid &&
+                  (checkOutForm.controls.state.touched ||
+                    checkOutForm.controls.state.dirty)
+                "
+              >
+                <div *ngIf="checkOutForm.controls.state.errors">
+                  <div
+                    *ngIf="checkOutForm.controls.state.errors['required']"
+                    style="color: red"
+                  >
+                    state is require!
+                  </div>
+                  <div
+                    *ngIf="checkOutForm.controls.state.errors['minlength']"
+                    style="color: red"
+                  >
+                    Min length 5 chars
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="form-group col-md-2">
-              <input type="text" class="form-control" id="inputZip" placeholder="zip">
+              <input
+                type="text"
+                class="form-control"
+                id="inputZip"
+                placeholder="zip"
+                formControlName="inputZip"
+              />
+              <div
+                class="box-message"
+                *ngIf="
+                  checkOutForm.controls.inputZip.invalid &&
+                  (checkOutForm.controls.inputZip.touched ||
+                    checkOutForm.controls.inputZip.dirty)
+                "
+              >
+                <div *ngIf="checkOutForm.controls.inputZip.errors">
+                  <div
+                    *ngIf="checkOutForm.controls.inputZip.errors['required']"
+                    style="color: red"
+                  >
+                    inputZip is require!
+                  </div>
+                  <div
+                    *ngIf="checkOutForm.controls.inputZip.errors['minlength']"
+                    style="color: red"
+                  >
+                    Min length 5 chars
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="Phone Number" placeholder="Phone Number">
+            <input
+              type="text"
+              class="form-control"
+              id="Phone Number"
+              placeholder="Phone Number"
+              formControlName="phone"
+            />
+            <div
+              class="box-message"
+              *ngIf="
+                checkOutForm.controls.phone.invalid &&
+                (checkOutForm.controls.phone.touched ||
+                  checkOutForm.controls.phone.dirty)
+              "
+            >
+              <div *ngIf="checkOutForm.controls.phone.errors">
+                <div
+                  *ngIf="checkOutForm.controls.phone.errors['required']"
+                  style="color: red"
+                >
+                  phone is require!
+                </div>
+                <div
+                  *ngIf="checkOutForm.controls.phone.errors['minlength']"
+                  style="color: red"
+                >
+                  Min length 5 chars
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <input class="form-check-input" type="checkbox" id="gridCheck" />
               <label class="form-check-label" for="gridCheck">
                 Keep this information to next time
               </label>
             </div>
           </div>
-          <button type="submit" class="btn-payment w-100">Continue To Payment</button>
+          <button
+            type="submit"
+            class="btn-payment w-100"
+            [disabled]="!checkOutForm.valid"
+          >
+            Continue To Payment
+          </button>
         </form>
       </div>
-      <div class="col-5">
+      <div class="col-md-5 col-sm-12">
         <div class="cart-product-list">
           <div class="cart-product-list-heading my-4">List Of Products</div>
           <div class="cart-product-list-main">
-            <div class="cart-product-list-grid d-flex justify-content-between align-items-center" *ngFor="let item of carts">
-                <div class="d-flex">
-                  <div class="cart-product-list-image">
-                    <img src="{{item.image}}" alt="">
-                  </div>
-                  <div class="cart-product-list-details">
-                    <div class="cart-product-tittle">
-                      <a>{{item.name}}</a>
-                    </div>
-                    <div class="cart-product-price">
-                      {{item.price | currency:"USD":"symbol":"0.0"}}
-                    </div>
-                    <div class="cart-quantity-size">
-                    </div>
-                  </div>
+            <div
+              class="cart-product-list-grid d-flex justify-content-between align-items-center"
+              *ngFor="let item of carts"
+            >
+              <div class="d-flex">
+                <div class="cart-product-list-image">
+                  <img src="{{ item.image }}" alt="" />
                 </div>
+                <div class="cart-product-list-details">
+                  <div class="cart-product-tittle">
+                    <a>{{ item.name }}</a>
+                  </div>
+                  <div class="cart-product-price">
+                    {{ item.price | currency : "USD" : "symbol" : "0.0" }}
+                  </div>
+                  <div class="cart-quantity-size"></div>
+                </div>
+              </div>
               <div class="">
                 <div class="right-order text-end">
                   <div>
                     Price:
-                    <span>{{item.price | currency:"USD":"symbol":"0.0"}}</span>
+                    <span>{{
+                      item.price | currency : "USD" : "symbol" : "0.0"
+                    }}</span>
                   </div>
                   <div>
                     quantity:
-                    <span>{{item.quantity}}</span>
+                    <span>{{ item.quantity }}</span>
                   </div>
                   <div>
                     Discount:
                     <span>15%</span>
                   </div>
-                  <div class="grand-total">Grand Total: {{subtotal(item) | currency:"USD":"symbol":"0.0"}}</div>
+                  <div class="grand-total">
+                    Grand Total:
+                    {{ subtotal(item) | currency : "USD" : "symbol" : "0.0" }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,7 +318,9 @@
         <!-- Order Summary -->
         <div class="cart-details">
           <div class="cart-order-heading">Order Summary</div>
-          <div class="cart-order-summary-des text-center">Shipping & taxes calculated at checkout</div>
+          <div class="cart-order-summary-des text-center">
+            Shipping & taxes calculated at checkout
+          </div>
           <div class="cart-line"></div>
           <div class="cart-detail-list text-center mx-4">
             <div class="row justify-content-between my-3">
@@ -107,16 +328,20 @@
                 <div class="cart-list-text">count:</div>
               </div>
               <div class="col-6 text-right">
-                <div class="cart-list-text">{{totalQuantity}}</div>
+                <div class="cart-list-text">{{ totalQuantity }}</div>
               </div>
             </div>
             <div class="cart-line"></div>
             <div class="row justify-content-between my-3">
               <div class="col-6 text-left">
-                <div class="cart-list-text font-weight-bold text-uppercase">Grand Total:</div>
+                <div class="cart-list-text font-weight-bold text-uppercase">
+                  Grand Total:
+                </div>
               </div>
               <div class="col-6 text-right">
-                <div class="cart-list-text font-weight-bold">{{totalPrice | currency:"USD":"symbol":"0.0"}}</div>
+                <div class="cart-list-text font-weight-bold">
+                  {{ totalPrice | currency : "USD" : "symbol" : "0.0" }}
+                </div>
               </div>
             </div>
           </div>
@@ -128,6 +353,5 @@
     </div>
   </div>
 </main>
-
 
 <app-footer></app-footer>

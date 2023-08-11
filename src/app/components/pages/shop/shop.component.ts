@@ -17,6 +17,7 @@ export class ShopComponent implements OnInit {
   results: number = 1;
   products: any = [];
   carts: any = [];
+  favs: any = [];
   categories: any = [];
   userFilter: any = { name: '' };
   productFormSearch: FormGroup = new FormGroup({
@@ -120,20 +121,35 @@ export class ShopComponent implements OnInit {
     this.fetchProductAPI();
   }
 
-  onFavorite(product: number) {
+  onFavorite(product: any) {
+    this.favs = localStorage.getItem('heart') ? JSON.parse(localStorage.getItem('heart') as any) : [];
+    let idx = this.favs.findIndex((item: any) => item.id === product.id);
     console.log(product);
-    Swal.fire('', 'Add to heart successfully !', 'success');
-    this.heartService.postHeart(product).subscribe((response) => {
-      this.heartService.getHeart().subscribe((data) => {
-        console.log(data);
-      });
-    });
+    if (idx >= 0) {
+      this.favs.splice(idx, 1);
+      localStorage.setItem('heart', JSON.stringify(this.favs));
+      Swal.fire('', 'Remove From favourite successfully !', 'success');
+    } else {
+      let heartItem: any = {
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        price: product.sale_price ? product.sale_price : product.price
+      };
+      Swal.fire('', 'Add to favourite successfully !', 'success');
+      this.favs.push(heartItem);
+      //save storage
+      localStorage.setItem('heart', JSON.stringify(this.favs));
+    }
   }
   onAddToCart(product: any) {
+    this.carts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') as any) : [];
     let idx = this.carts.findIndex((item: any) => item.id === product.id);
     console.log(product);
     if (idx >= 0) {
       this.carts[idx].quantity += 1;
+      this.app.saveCart(this.carts);
+      Swal.fire('', 'Add to cart successfully !', 'success');
     } else {
       let cartItem: any = {
         id: product.id,
@@ -147,9 +163,10 @@ export class ShopComponent implements OnInit {
       };
       Swal.fire('', 'Add to cart successfully !', 'success');
       this.carts.push(cartItem);
-    }
-    //save storage
+          //save storage
     this.app.saveCart(this.carts);
+    }
+
     console.log(this.carts);
   }
 

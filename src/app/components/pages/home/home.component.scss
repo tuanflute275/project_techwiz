@@ -1,5 +1,9 @@
 @import '../../../../styles.scss';
 
+h2{
+  font-family: "Lora", serif;
+
+}
 .img-overlay{
   position: relative;
   z-index: 0 !important;
@@ -134,5 +138,15 @@
   }
   .verse{
     padding: 0 !important;
+  }
+  .home1 img{
+    margin-left: 30px;
+  }
+  .home1 p{
+    text-align: center;
+  }
+  .img1{
+    // text-align: center;
+    padding-left: 80px;
   }
 }

@@ -11,10 +11,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <form
-          [formGroup]="productFormSearch"
-          action=""
-        >
+        <form [formGroup]="productFormSearch" action="">
           <div id="search-box">
             <input
               type="text"
@@ -64,7 +61,7 @@
           </button>
         </div>
 
-        <div class="compare pt-5">
+        <div class="compare pt-5 pageSizee">
           <b>COMPARE</b>
           <hr />
           <div class="row">
@@ -102,7 +99,7 @@
       <div class="col-md-9">
         <div class="shop_toolbar_wrapper">
           <div class="row justify-content-around align-items-center py-2">
-            <div class="dropdown p-0 m-0">
+            <div class="dropdown pb-2 m-0">
               <button
                 class="btn btn-sort dropdown-toggle"
                 type="button"
@@ -159,11 +156,12 @@
                 </div>
               </div>
             </div>
-            <p class="p-0 m-0">
+            <p class="p-0 m-0 pageSizee">
               Showing {{ page }}–{{ pageSize }} of {{ results }} results
             </p>
           </div>
         </div>
+
         <div class="row">
           <div
             class="col-md-4"
@@ -204,7 +202,7 @@
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                 </div>
-                <h5 class="card-title">{{ item.name }}</h5>
+                <h5 class="card-title text-truncate">{{ item.name }}</h5>
                 <div
                   class="box-price d-flex justify-content-center align-items-center"
                 >

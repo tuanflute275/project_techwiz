@@ -2,12 +2,11 @@
 
 <main>
   <div class="text-center box-title">
+    <h3 class="title">{{ productDetail.name }}</h3>
     <nav class="breadcrumb text-center d-flex justify-content-center">
       <a class="breadcrumb-item default" routerLink="/">Home</a>
       <span class="breadcrumb-item active">{{ productDetail.name }}</span>
     </nav>
-    <h3 class="title">{{ productDetail.name }}</h3>
-    <div class="container"></div>
   </div>
   <div class="container p-2">
     <div class="row align-items-center">
@@ -23,17 +22,26 @@
 
       <div class="col-md-6">
         <h3>{{ productDetail.name }}</h3>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
+        <i class="fa fa-star text-warning"></i>
+        <i class="fa fa-star text-warning"></i>
+        <i class="fa fa-star text-warning"></i>
+        <i class="fa fa-star text-warning"></i>
+        <i class="fa fa-star text-white"></i>
         <p>(customer review)</p>
-        <p class="sale_price font-weight-bold">
+        <p
+          class="sale_price font-weight-bold"
+          *ngIf="productDetail.sale_price > 0"
+        >
           {{ productDetail.sale_price | currency : "USD"
           }}<del class="ml-2 font-weight-normal">{{
             productDetail.price | currency : "USD"
           }}</del>
+        </p>
+        <p
+          class="sale_price font-weight-bold"
+          *ngIf="productDetail.sale_price <= 0"
+        >
+          {{ productDetail.price | currency : "USD" }}
         </p>
         <p>
           {{ productDetail.description }}
@@ -58,6 +66,7 @@
               name=""
               id=""
               class="btn btn-success btn-block"
+              (click)="onAddToCart(productDetail)"
             >
               Add To <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
             </button>
@@ -250,15 +259,24 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
               </div>
-              <h5 class="card-title">{{ item.name }}</h5>
+              <h5 class="card-title text-truncate">{{ item.name }}</h5>
               <div
                 class="box-price d-flex justify-content-center align-items-center"
+                *ngIf="item.sale_price > 0"
               >
                 <p class="card-price mr-2 font-weight-bold">
                   {{ item.sale_price | currency : "USD" : "symbol" : "0.2" }}
                 </p>
                 <p class="card-sale_price">
                   {{ item.price | currency : "USD" : "symbol" }}
+                </p>
+              </div>
+              <div
+                class="box-price d-flex justify-content-center align-items-center"
+                *ngIf="item.sale_price <= 0"
+              >
+                <p class="card-price mr-2 font-weight-bold">
+                  {{ item.price | currency : "USD" : "symbol" : "0.2" }}
                 </p>
               </div>
             </div>
