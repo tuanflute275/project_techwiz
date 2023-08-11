@@ -8,6 +8,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <div class="dropdown custom-dropdown" style="margin-top: 10px;">
+        <a style="color: #333; font-size: 27px;" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+          <span class="icon-cog mr-2"></span><i class="cil-grid"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+          <a *ngFor="let item of categories" routerLink="/category/{{ item.id }}"
+            class="dropdown-item nav-link text-dark dropdown-item-custom">{{ item.name }}</a>
+        </div>
+      </div>
       <ul class="navbar-nav m-auto mt-2 py-4 mt-lg-0 menu">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
