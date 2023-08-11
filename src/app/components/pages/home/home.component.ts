@@ -34,9 +34,10 @@ export class HomeComponent implements OnInit {
   }
 
   fetchProductAPI() {
-    this.app.getProduct().subscribe(response => {
-      this.products = response;
-      console.log('Response : ', this.products);
+    this.app.getData().subscribe((res: any) => {
+      console.log(res);
+
+      this.products = res.product;
     });
   }
 

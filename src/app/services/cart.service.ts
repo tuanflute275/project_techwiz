@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class HeartService {
 
-  private API_CART = 'http://localhost:3000/carts/';
+  private API_CART = 'http://localhost:3000/carts';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': "application/json",
@@ -37,8 +37,13 @@ export class HeartService {
     return this.httpClient.delete<any>(url, this.httpOptions);
   }
 
+  public getCartByUserID(uId: any) {
+    const url = `${this.API_CART}?user_id=${uId}&_embed=items_in_cart`;
+    return this.httpClient.get<any>(url, this.httpOptions);
+  }
+
   getCartTotalPrice() {
-    let carts = this.getCarts()  
+    let carts = this.getCarts()
     let total: number = 0;
     carts.forEach((item: any) => {
       total += item.quantity * item.price

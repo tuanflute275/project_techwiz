@@ -41,10 +41,13 @@ export class ProductDetailComponent implements OnInit {
       this.id = params.get('id') as string;
 
       // Thực hiện các hành động cần thiết dựa trên ID mới
-      this.app.getProductById(this.id).subscribe((response) => {
-        console.log('response by id', response);
-        this.productDetail = response[0];
-        this.getListRelatedProd(response[0].category_id);
+      this.app.getData().subscribe((response: any) => {
+        // console.log('response by id', response);
+        this.productDetail = response.product.find((prod: any) => prod.id == this.id);
+        console.log(response.product.find((prod: any) => prod.id == this.id));
+
+        // this.productDetail = response[0];
+        this.getListRelatedProd(this.productDetail.category_id);
       });
     });
     let id = this.route.snapshot.params['id'];
@@ -61,16 +64,22 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getListCategory() {
-    this.app.getCategory().subscribe((res) => {
+    this.app.getData().subscribe((res: any) => {
       console.log(res);
-      this.categories = res;
+      this.categories = res.category;
     });
+  }
+
+  getProductByID(id: any) {
+
   }
 
   getListRelatedProd(cateId: any) {
     console.log(cateId);
-    this.app.getRelatedProduct(cateId).subscribe((res) => {
-      this.products = res;
+    this.app.getData().subscribe((response: any) => {
+      this.products = response.product.filter((prod: any) => prod.category_id == cateId);
+      console.log(this.products);
+
     });
   }
 

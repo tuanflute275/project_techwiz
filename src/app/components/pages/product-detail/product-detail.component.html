@@ -30,9 +30,9 @@
         <i class="fa fa-star"></i>
         <p>(customer review)</p>
         <p class="sale_price font-weight-bold">
-          {{ productDetail.price | currency : "USD"
+          {{ productDetail.sale_price | currency : "USD"
           }}<del class="ml-2 font-weight-normal">{{
-            productDetail.sale_price | currency : "USD"
+            productDetail.price | currency : "USD"
           }}</del>
         </p>
         <p>
@@ -88,20 +88,40 @@
           </p>
         </div>
 
-        <div class="prod-social d-flex ">
-          <a href="https://www.facebook.com/" target="_blank" class="social-icons btn btn-primary btn-sm border-0">
+        <div class="prod-social d-flex">
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            class="social-icons btn btn-primary btn-sm border-0"
+          >
             <i class="fa-brands fa-facebook-f"></i> Facebook
           </a>
-          <a href="https://twitter.com/home?lang=vi" target="_blank" class="social-icons btn btn-primary btn-sm border-0">
+          <a
+            href="https://twitter.com/home?lang=vi"
+            target="_blank"
+            class="social-icons btn btn-primary btn-sm border-0"
+          >
             <i class="fa-brands fa-twitter"></i> Twitter
           </a>
-          <a href="https://www.pinterest.com/" target="_blank" class="social-icons btn btn-primary btn-sm border-0">
+          <a
+            href="https://www.pinterest.com/"
+            target="_blank"
+            class="social-icons btn btn-primary btn-sm border-0"
+          >
             <i class="fa-brands fa-pinterest"></i> Pinterest
           </a>
-          <a href="https://www.google.com.vn/?hl=vi" target="_blank" class="social-icons btn btn-primary btn-sm border-0">
+          <a
+            href="https://www.google.com.vn/?hl=vi"
+            target="_blank"
+            class="social-icons btn btn-primary btn-sm border-0"
+          >
             <i class="fa-brands fa-google-plus-g"></i> Google
           </a>
-          <a href="https://www.linkedin.com/" target="_blank" class="social-icons btn btn-primary btn-sm border-0">
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            class="social-icons btn btn-primary btn-sm border-0"
+          >
             <i class="fa-brands fa-linkedin"></i> Linkedin
           </a>
         </div>
@@ -110,7 +130,12 @@
 
     <div class="behavior">
       <h3 class="my-3">Description</h3>
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div
+        class="tab-pane fade show active"
+        id="home"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+      >
         {{ productDetail.description }}
       </div>
       <h3 class="my-5">Reviews</h3>
@@ -184,7 +209,13 @@
         <h2>Related Products</h2>
       </div>
       <div class="row">
-        <div class="col-md-3" *ngFor="let item of products">
+        <div
+          class="col-md-3"
+          *ngFor="
+            let item of products
+              | paginate : { itemsPerPage: 4, currentPage: 1 }
+          "
+        >
           <div
             class="card text-center border-0"
             routerLink="/productDetail/{{ item.id }}"
@@ -227,7 +258,7 @@
                   {{ item.sale_price | currency : "USD" : "symbol" : "0.2" }}
                 </p>
                 <p class="card-sale_price">
-                  {{ item.price | currency : "USD" : "symbol" : "0.2" }}
+                  {{ item.price | currency : "USD" : "symbol" }}
                 </p>
               </div>
             </div>

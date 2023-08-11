@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
   page: number = 1;
@@ -20,121 +20,121 @@ export class ShopComponent implements OnInit {
   categories: any = [];
   userFilter: any = { name: '' };
   productFormSearch: FormGroup = new FormGroup({
-    name: new FormControl('')
+    name: new FormControl(''),
   });
 
   minPrice: number = 0;
   maxPrice: number = 0;
   filteredProducts: any = [];
 
-
   constructor(
     private app: AppService,
     private heartService: HeartService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.fetchProductAPI();
     this.getListCategory();
   }
 
+  // Slider Options
+  minValue: number = 0;
+  maxValue: number = 100;
+  options: Options = {
+    floor: 0,
+    ceil: 100,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          this.minPrice = value;
 
-    // Slider Options
-    minValue: number = 0;
-    maxValue: number = 100;
-    options: Options = {
-      floor: 0,
-      ceil: 100,
-      translate: (value: number, label: LabelType): string => {
-        switch (label) {
-          case LabelType.Low:
-            this.minPrice = value;
+          return '<b>Min price:</b> Rs. ' + value;
+        case LabelType.High:
+          this.maxPrice = value;
+          return '<b>Max price:</b> Rs. ' + value;
+        default:
+          return 'Rs. ' + value;
+      }
+    },
+  };
 
-            return '<b>Min price:</b> Rs. ' + value;
-          case LabelType.High:
-            this.maxPrice = value;
-            return '<b>Max price:</b> Rs. ' + value;
-          default:
-            return 'Rs. ' + value;
-        }
-      },
-    };
-
-    // END Slider Options
+  // END Slider Options
 
   darkMode = false;
 
   toggleTheme() {
     this.darkMode = !this.darkMode;
-    document.documentElement.setAttribute('data-theme', this.darkMode ? 'dark' : 'light')
-  }
-
-  filterProductsByPrice() {
-    console.log("Min: " + this.minPrice + " Max: " + this.maxPrice);
-    this.app.filterByPriceRange(this.minPrice, this.maxPrice).subscribe(response => {
-      this.products = response;
-    });
-
+    document.documentElement.setAttribute(
+      'data-theme',
+      this.darkMode ? 'dark' : 'light'
+    );
   }
 
   getListCategory() {
-    this.app.getCategory().subscribe(res => {
+    this.app.getData().subscribe((res: any) => {
       console.log(res);
-      this.categories = res;
-    })
+      this.categories = res.category;
+    });
   }
 
   fetchProductAPI() {
-    this.app.getProduct().subscribe(response => {
-      this.products = response;
+    this.app.getData().subscribe((res: any) => {
+      console.log(res);
+
+      this.products = res.product;
     });
   }
 
-  submitSearch() {
-    let data = this.productFormSearch.value.name
-    this.app.searchProduct(data).subscribe((response: any) => {
-      this.products = response;
-    })
+  filterProductsByPrice() {
+    console.log('Min: ' + this.minPrice + ' Max: ' + this.maxPrice);
+
+    this.products = this.products.filter((prod: any) => prod.price > this.minPrice && prod.price < this.maxPrice);
   }
 
-  sortBy(name: string, type: string){
-    this.app.sort(name, type).subscribe(response=>{
-      console.log(response)
-      this.products = response;
+  sortBy(name_sort: string, type_sort: string) {
+    console.log({
+      name_sort,
+      type_sort
     });
+
+    let compare = (a: any, b: any) => {
+      if (name_sort == "name") {
+        return (type_sort == "desc") ? (a.name - b.name) : (b.name - a.name);
+      }
+      if (name_sort == "price") {
+        return (type_sort == "desc") ? (a.price - b.price) : (b.price - a.price);
+      }
+      return b.id - a.id;
+    };
+    this.products = this.products.sort(compare);
+
   }
 
-  handlePerPage(perPage: number){
-    console.log(perPage)
-    this.pageSize = perPage
+  handlePerPage(perPage: number) {
+    console.log(perPage);
+    this.pageSize = perPage;
   }
 
-  reset(){
-    this.fetchProductAPI()
+  reset() {
+    this.fetchProductAPI();
   }
-
 
   onFavorite(product: number) {
-    console.log(product)
-    Swal.fire(
-      '',
-      'Add to heart successfully !',
-      'success'
-    )
-    this.heartService.postHeart(product).subscribe(response => {
-      this.heartService.getHeart().subscribe(data => {
-        console.log(data)
-      })
-    })
+    console.log(product);
+    Swal.fire('', 'Add to heart successfully !', 'success');
+    this.heartService.postHeart(product).subscribe((response) => {
+      this.heartService.getHeart().subscribe((data) => {
+        console.log(data);
+      });
+    });
   }
   onAddToCart(product: any) {
-    let idx = this.carts.findIndex((item: any) => item.id === product.id)
-    console.log(product)
+    let idx = this.carts.findIndex((item: any) => item.id === product.id);
+    console.log(product);
     if (idx >= 0) {
       this.carts[idx].quantity += 1;
     } else {
-
       let cartItem: any = {
         id: product.id,
         name: product.name,
@@ -142,20 +142,15 @@ export class ShopComponent implements OnInit {
         price: product.sale_price ? product.sale_price : product.price,
         quantity: 1,
         subtotal: function () {
-          return this.price * this.quantity
-        }
-      }
-      Swal.fire(
-        '',
-        'Add to cart successfully !',
-        'success'
-      )
-      this.carts.push(cartItem)
+          return this.price * this.quantity;
+        },
+      };
+      Swal.fire('', 'Add to cart successfully !', 'success');
+      this.carts.push(cartItem);
     }
     //save storage
-    this.app.saveCart(this.carts)
+    this.app.saveCart(this.carts);
     console.log(this.carts);
-
   }
 
   getDetailProduct(id: number) {

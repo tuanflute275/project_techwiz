@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
   signupForm: any = FormGroup;
   responseMessage: any;
-  account:any = [];
+  account:any = [] ;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,26 +37,20 @@ export class RegisterComponent implements OnInit {
       password: formData.password,
     }
     console.log(data);
-
-    this.app.singUp(data).subscribe(response=>{
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Sign Up Success',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      this.signupForm.reset();
-      this.router.navigate(['/login']);
-    }, error=>{
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Something went wrong !!',
-        showConfirmButton: false,
-        timer: 1500
-      });
-    })
+    let account = [];
+    if(localStorage.getItem('account')){
+      account = JSON.parse(localStorage.getItem('account') as any);
+    }
+    account.push(data);
+    localStorage.setItem('account', JSON.stringify(account));
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Sign Up Success',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    this.signupForm.reset();
+    this.router.navigate(['/login']);
   }
-
 }

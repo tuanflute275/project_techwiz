@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { LabelType, Options } from 'ng5-slider';
+import { take } from 'rxjs';
 import { AppService } from 'src/app/services/app.service';
 import { HeartService } from 'src/app/services/heart.service';
 import Swal from 'sweetalert2';
@@ -94,24 +95,25 @@ export class ProdByCateComponent implements OnInit {
   }
 
   getListCategory() {
-    this.app.getCategory().subscribe((res) => {
+    this.app.getData().subscribe((res: any) => {
       console.log(res);
-      this.categories = res;
+      this.categories = res.category;
     });
   }
 
   fetchCategoryAPI(cateID: any) {
-    this.app.getCategoryByID(cateID).subscribe((response) => {
-      console.log(response);
-      this.category = response[0];
+    this.app.getData().subscribe((res: any) => {
+      console.log(res);
+      this.category = res.category.find((cate: any) => cate.id === cateID);
     });
   }
 
   fetchProductAPI(cateID: any) {
-    this.app.getProductByCategory(cateID).subscribe(async (response) => {
-      this.products = await response;
-      this.results = await response.length;
-      return await response;
+    this.app.getData().subscribe((res: any) => {
+      console.log(res);
+      console.log(res.product.filter((prod: any) => prod.category_id == cateID));
+
+      this.products = res.product.filter((prod: any) => prod.category_id == cateID);
     });
   }
 
@@ -122,18 +124,30 @@ export class ProdByCateComponent implements OnInit {
     });
   }
 
-  sortBy(name: string, type: string){
-    this.app.sort(name, type).subscribe(response=>{
-      console.log(response)
-      this.products = response;
+  sortBy(name_sort: string, type_sort: string){
+    console.log({
+      name_sort,
+      type_sort
     });
+
+    let compare = (a: any, b: any) => {
+      if (name_sort == "name") {
+        return (type_sort == "desc") ? (a.name - b.name) : (b.name - a.name);
+      }
+      if (name_sort == "price") {
+        return (type_sort == "desc") ? (a.price - b.price) : (b.price - a.price);
+      }
+      return b.id - a.id;
+    };
+    console.log(this.products.sort(compare));
+
+    this.products.sort((a: any, b : any) => compare(a.price, b.price || b.price));
   }
 
   handlePerPage(perPage: number){
     console.log(perPage)
     this.pageSize = perPage
   }
-
 
   onFavorite(product: number) {
     console.log(product);

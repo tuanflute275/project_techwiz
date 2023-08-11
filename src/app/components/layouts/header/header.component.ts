@@ -29,14 +29,13 @@ export class HeaderComponent implements OnInit {
     this.getListCategory();
     this.u_data = this.getUData();
 
-    this.getAccountData(this.u_data?.id)
   }
 
   getListCategory() {
-    this.app.getCategory().subscribe(res => {
+    this.app.getData().subscribe((res: any) => {
       console.log(res);
-      this.categories = res;
-    })
+      this.categories = res.category;
+    });
   }
 
   getUData(): any {
@@ -45,12 +44,7 @@ export class HeaderComponent implements OnInit {
     return data;
   }
 
-  getAccountData(id: any) {
-    this.app.getAccount(id).subscribe(response => {
-      this.userName = response[0].name;
-      console.log(this.userName)
-    });
-  }
+
 
   submitSearch() {
     let data = this.postFormSearch.value.name

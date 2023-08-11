@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   loginForm: any = FormGroup;
   responseMessage: any;
+  listAccount: [] =  localStorage.getItem('account') ? JSON.parse(localStorage.getItem('account') as any) : [] ?? [];
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -27,9 +28,9 @@ export class LoginComponent implements OnInit {
     if (this.getUData()) {
       this.router.navigate(['/']);
     }
+    console.log(this.listAccount);
+
   }
-
-
 
   getUData(): any {
     const data = localStorage.getItem("u_data") ? JSON.parse(localStorage.getItem("u_data") as string) : null;
@@ -45,10 +46,11 @@ export class LoginComponent implements OnInit {
     };
 
     console.log(data);
-    this.app.login().subscribe(response => {
-      const user = response.find((a: any) => {
+
+      const user = this.listAccount.find((a: any) => {
         return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
       });
+
       if (user) {
         Swal.fire({
           position: 'center',
@@ -63,22 +65,18 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       } else {
         Swal.fire({
-          position: 'top-end',
+          position: 'center',
           icon: 'error',
           title: 'User not found !',
           showConfirmButton: false,
           timer: 1500
         });
       }
-    }, error => {
-      alert('something went wrong')
-    }
-    )
   }
 
   developing() {
     Swal.fire({
-      position: 'top-end',
+      position: 'center',
       icon: 'warning',
       title: 'Developing !',
       showConfirmButton: false,

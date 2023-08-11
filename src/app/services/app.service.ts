@@ -16,7 +16,9 @@ export class AppService {
   };
 
   constructor(private httpClient: HttpClient) {}
-
+  getData() {
+    return this.httpClient.get('./assets/db.json');
+  }
   public singUp(data: any) {
     const url = `${this.API_ACCOUNT}`;
     return this.httpClient.post<any>(url, data, this.httpOptions);
@@ -34,14 +36,20 @@ export class AppService {
 
   //client post email
   public postEmail(data: any) {
-    return this.httpClient.post<any>('http://localhost:3000/emailUser/', data,this.httpOptions);
+    return this.httpClient.post<any>(
+      'http://localhost:3000/emailUser/',
+      data,
+      this.httpOptions
+    );
   }
 
   public postReviewFormContact(data: any) {
-    return this.httpClient.post<any>('http://localhost:3000/contacts/', data,this.httpOptions);
+    return this.httpClient.post<any>(
+      'http://localhost:3000/contacts/',
+      data,
+      this.httpOptions
+    );
   }
-
-
 
   // category
   public getCategory() {
@@ -71,7 +79,11 @@ export class AppService {
   }
 
   public getRelatedProduct(cateId: any) {
-    const url = `${this.API_PRODUCT}` + '?category_id=' + cateId + '&_limit=4&_sort=id&_order=desc' ;
+    const url =
+      `${this.API_PRODUCT}` +
+      '?category_id=' +
+      cateId +
+      '&_limit=4&_sort=id&_order=desc';
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
@@ -80,10 +92,9 @@ export class AppService {
     return this.httpClient.get<any>(url, this.httpOptions);
   }
   public sort(name: string, type: string) {
-      const url = `${this.API_PRODUCT}` + `?_sort=${name}&_order=${type}`;
+    const url = `${this.API_PRODUCT}` + `?_sort=${name}&_order=${type}`;
     return this.httpClient.get<any>(url, this.httpOptions);
   }
-
 
   public filterByPriceRange(min: any, max: any) {
     const url = `${this.API_PRODUCT}` + `?price_gte=${min}&price_lte=${max}`;
