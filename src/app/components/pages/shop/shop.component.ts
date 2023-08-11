@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class ShopComponent implements OnInit {
   page: number = 1;
+  pageSize: number = 9;
+  results: number = 1;
   products: any = [];
   carts: any = [];
   categories: any = [];
@@ -96,15 +98,20 @@ export class ShopComponent implements OnInit {
     })
   }
 
-  sortByAZ(){
-    this.app.sort('name','asc').subscribe(response=>{
+  sortBy(name: string, type: string){
+    this.app.sort(name, type).subscribe(response=>{
       console.log(response)
       this.products = response;
-    })
+    });
   }
 
-  sortByZA(){
+  handlePerPage(perPage: number){
+    console.log(perPage)
+    this.pageSize = perPage
+  }
 
+  reset(){
+    this.fetchProductAPI()
   }
 
 

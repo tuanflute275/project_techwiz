@@ -200,7 +200,7 @@ main {
     display: flex;
   }
 
-  .shop_toolbar_wrapper{
+  .shop_toolbar_wrapper {
     margin-bottom: 10px;
     border: 1px solid $border-e8;
     .dropdown {
@@ -217,4 +217,20 @@ main {
     }
   }
 
+  .btn-filter{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    text-transform: capitalize;
+    color: #ffffff;
+    background: #222222;
+    border: 0;
+    border-radius: 30px;
+    float: left;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    &:hover{
+      background: $main-color;
+    }
+  }
 }

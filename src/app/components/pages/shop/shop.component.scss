@@ -4,6 +4,11 @@ main {
   margin-top: 110px;
   .box-title {
     padding: 10px 0;
+    background-color: #e9ecef;
+    h3 {
+      margin-top: 40px;
+      font-family: "Lora", serif;
+    }
     .default {
       text-decoration: none;
       color: #999999;
@@ -141,17 +146,16 @@ main {
     }
   }
 
-
   ul {
     list-style: none;
     padding: 0;
-    li{
+    li {
       margin: 10px 0;
-      a{
+      a {
         text-decoration: none;
         color: #333;
-        transition: all .3s;
-        &:hover{
+        transition: all 0.3s;
+        &:hover {
           color: $main-color;
         }
       }
@@ -195,13 +199,39 @@ main {
   .text-right {
     display: flex;
   }
-}
-.box-title{
-  background-color:  #e9ecef;
-  height: 200px;
+
+  .shop_toolbar_wrapper {
+    margin-bottom: 10px;
+    border: 1px solid $border-e8;
+    .dropdown {
+      .btn-sort {
+        border: 1px solid $border-e8;
+        text-transform: capitalize;
+        &:focus {
+          box-shadow: 0 0 0 $white-color;
+        }
+      }
+      .dropdown-menu {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .btn-filter {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    text-transform: capitalize;
+    color: #ffffff;
+    background: #222222;
+    border: 0;
+    border-radius: 30px;
+    float: left;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    &:hover {
+      background: $main-color;
+    }
+  }
 }
 
-.box-title h3{
-  margin-top: 40px;
-  font-family: "Lora", serif;
-}

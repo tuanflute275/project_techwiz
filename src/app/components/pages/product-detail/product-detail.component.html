@@ -186,10 +186,10 @@
       <div class="row">
         <div class="col-md-3" *ngFor="let item of products">
           <div
-            class="card text-center border-0 position-relative"
+            class="card text-center border-0"
             routerLink="/productDetail/{{ item.id }}"
           >
-            <div class="show">
+            <div class="show position-relative">
               <div class="hide-cus">
                 <div class="icon-heart position-absolute">
                   <a (click)="onFavorite(item.id)">

@@ -12,19 +12,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <form
-          [formGroup]="productFormSearch"
-          (ngSubmit)="submitSearch()"
-          action=""
-        >
+        <form [formGroup]="productFormSearch" (ngSubmit)="submitSearch()" action="">
           <div id="search-box">
-            <input
-              type="text"
-              id="search-box__input"
-              formControlName="name"
-              [(ngModel)]="userFilter.name"
-              placeholder="Search.."
-            />
+            <input type="text" id="search-box__input" formControlName="name" [(ngModel)]="userFilter.name"
+              placeholder="Search.." />
             <button type="submit" id="search-box__btn">
               <i class="cil-search"></i>
             </button>
@@ -45,42 +36,24 @@
           <b>FILTER BY PRICE</b>
           <hr />
 
-          <ng5-slider
-            [(value)]="minValue"
-            [(highValue)]="maxValue"
-            [options]="options"
-          ></ng5-slider>
-          <button
-            class="btn btn-primary mt-3 rounded-0 btn-block btn-sm"
-            (click)="filterProductsByPrice()"
-          >
+          <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+          <button class="btn btn-filter mt-3 rounded-0 btn-block btn-sm mb-3" (click)="filterProductsByPrice()">
             Filter Now
+          </button>
+          <button (click)="reset()" class="btn btn-warning text-white mt-3 rounded-0 btn-block btn-sm"
+            (click)="filterProductsByPrice()">
+            Reset All
           </button>
         </div>
 
-        <div class="manufacturer pt-3">
-          <b>MANUFACTURER</b>
-          <hr />
-          <ul>
-            <li><a href="">Brake Parts</a></li>
-            <li><a href="">Accessories</a></li>
-            <li><a href="">Engie Parts</a></li>
-            <li><a href="">Hermes</a></li>
-            <li><a href="">Louis Vuittion</a></li>
-          </ul>
-        </div>
 
         <div class="compare pt-5">
           <b>COMPARE</b>
           <hr />
           <div class="row">
             <div class="col-md-5">
-              <img
-                src="https://htmldemo.net/lukani/lukani/assets/img/product/product2.jpg"
-                alt=""
-                width="80px"
-                height="80px"
-              />
+              <img src="https://htmldemo.net/lukani/lukani/assets/img/product/product2.jpg" alt="" width="80px"
+                height="80px" />
             </div>
 
             <div class="col-md-7">
@@ -90,12 +63,8 @@
           </div>
           <div class="row">
             <div class="col-md-5">
-              <img
-                src="https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg"
-                alt=""
-                width="80px"
-                height="80px"
-              />
+              <img src="https://htmldemo.net/lukani/lukani/assets/img/product/product3.jpg" alt="" width="80px"
+                height="80px" />
             </div>
 
             <div class="col-md-7">
@@ -106,14 +75,41 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-                sort:
+        <div class="shop_toolbar_wrapper">
+          <div class="row justify-content-around align-items-center py-2">
+            <div class="dropdown p-0 m-0">
+              <button class="btn btn-sort dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Sort by price: high to low
               </button>
-          <div class="dropdown-menu" aria-labelledby="triggerId">
-            <a (click)="sortByAZ()" class="dropdown-item">sort a-z</a>
-            <a (click)="sortByZA()" class="dropdown-item">sort z-a</a>
+              <div class="dropdown-menu" aria-labelledby="triggerId">
+                <a (click)="sortBy('name', 'asc')" class="dropdown-item">Product Name: A-Z</a>
+                <a (click)="sortBy('name', 'desc')" class="dropdown-item">Product Name: Z-A</a>
+                <a (click)="sortBy('id', 'desc')" class="dropdown-item">Sort by newness</a>
+                <a (click)="sortBy('price', 'desc')" class="dropdown-item">Sort by price: high to low</a>
+                <a (click)="sortBy('price', 'asc')" class="dropdown-item">Sort by price: low to high</a>
+                <a (click)="reset()" class="dropdown-item">Default</a>
+              </div>
+            </div>
+            <div class="d-flex page-size">
+              <p class="mr-3 font-weight-bold  mt-1">Items per page</p>
+              <div class="dropdown p-0 m-0">
+                <button class="btn btn-sort dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  --choose--
+                </button>
+                <div class="dropdown-menu text-center w-25" aria-labelledby="triggerId">
+                  <a (click)="handlePerPage(3)" class="dropdown-item">3</a>
+                  <a (click)="handlePerPage(6)" class="dropdown-item">6</a>
+                  <a (click)="handlePerPage(9)" class="dropdown-item">9</a>
+                  <a (click)="handlePerPage(12)" class="dropdown-item">12</a>
+                  <a (click)="handlePerPage(15)" class="dropdown-item">15</a>
+                  <a (click)="handlePerPage(18)" class="dropdown-item">18</a>
+                  <a (click)="handlePerPage(24)" class="dropdown-item">24</a>
+                </div>
+              </div>
+            </div>
+            <p class="p-0 m-0">Showing {{ page }}–{{ pageSize }} of {{ results }} results</p>
           </div>
         </div>
         <div class="row">
